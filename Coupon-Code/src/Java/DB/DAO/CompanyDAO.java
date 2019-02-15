@@ -3,7 +3,6 @@ package Java.DB.DAO;
 import java.util.Set;
 
 import Java.JavaBean.Company;
-import Java.JavaBean.Coupon;
 
 /**
  * @Author -
@@ -17,8 +16,8 @@ public interface CompanyDAO {
 
 	void updateCompany(Company company) throws Exception;
 
-	Coupon getCompany(long id) throws Exception;
+	Company getCompany(long id) throws Exception;
 
-	Set<Coupon> getAllCompanies() throws Exception;
+	Set<Company> getAllCompanies() throws Exception;
 
 }
