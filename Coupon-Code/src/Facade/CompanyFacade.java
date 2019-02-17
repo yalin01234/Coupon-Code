@@ -5,7 +5,6 @@ import java.util.Set;
 import DBDAO.CompanyDBDAO;
 import Java.JavaBean.ClientType;
 import Java.JavaBean.Company;
-import Java.JavaBean.Coupon;
 
 /**
  * @Author - Oriel
@@ -44,7 +43,7 @@ public class CompanyFacade implements CouponClientFacade {
 		return company;
 	}
 
-	public Set<Coupon> getAllCompanies() throws Exception {
+	public Set<Company> getAllCompanies() throws Exception {
 
 		return compDAO.getAllCompanies();
 	}
