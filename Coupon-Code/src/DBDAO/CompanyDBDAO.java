@@ -23,29 +23,14 @@ public class CompanyDBDAO implements CompanyDAO {
 
 	/**
 	 * 
-	 * This class implement basic methods between the application level to the DB
-	 * 
-	 * such as C.R.U.D. the logic of the program dosen't implement in this level.
-	 * 
-	 * this level is the only connection to the SQL database,this level uses a
-	 * 
-	 * connection pool as a data access pattern It Contains : createCompany
-	 * 
-	 * removeComapny updateComapny getCompany getAllCompanies getCoupons
-	 * 
-	 * printAllCompmies getCompany
+	 * This class is implemented basic methods between the application level to the
+	 * DB in particular the connection to DB
 	 * 
 	 * 
-	 * 
-	 * @throws DBException
-	 * 
-	 */
-
-	/***************************************
-	 * Attributes
+	 * /*************************************** Attributes
 	 *******************************************/
 
-	static Connection conn;
+	private Connection conn;
 
 	private Company company;
 
@@ -68,8 +53,6 @@ public class CompanyDBDAO implements CompanyDAO {
 	@Override
 
 	public void createCompany(Company company) throws Exception {
-
-		// Open a connection from the connection pool class
 
 		try {
 
@@ -506,10 +489,9 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		Set<Company> companies = new HashSet<Company>();
 
-		// Open a connection from the connection pool class
-
 		try {
 
+			// conn = DriverManager.getConnection(getDBUrl());
 			conn = DriverManager.getConnection(Utils.getDBUrl());
 
 		} catch (Exception e) {

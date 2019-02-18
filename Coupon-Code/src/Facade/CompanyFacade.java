@@ -24,11 +24,7 @@ public class CompanyFacade implements CouponClientFacade {
 	 * The user login to the system and the instance will be according to the type
 	 * of the client.
 	 * 
-	 * This level should uses the DAO level ( couponDBDAO, CompanyDBDAO )
 	 * 
-	 * In this level we will implement the logic of the program.
-	 * 
-	 * It Contains :
 	 * 
 	 * Login
 	 * 

@@ -25,7 +25,7 @@ public class Utils {
 	}
 
 	public static String getDBUrl() {
-		return "jdbc:derby://localhost:3301/MyDB;create=true";
+		return "jdbc:derby://localhost:3301/JBDB;create=true";
 	}
 
 }
