@@ -82,21 +82,9 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			pstmt.executeUpdate();
 
-			try {
+		} catch (Exception e) {
 
-			} catch (Exception e) {
-
-				// TODO Auto-generated catch block
-
-				e.printStackTrace();
-
-			}
-
-		} catch (SQLException e) {
-
-			// Handle errors for JDBC
-
-			throw new Exception("Company creation failed");
+			e.printStackTrace();
 
 		} finally {
 

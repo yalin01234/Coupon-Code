@@ -20,7 +20,7 @@ public class Database {
 	private Database() {
 
 		try {
-
+			System.out.println("test1");
 			Database.createTables(DriverManager.getConnection(getDBUrl()));
 
 		} catch (Exception e) {
@@ -69,8 +69,9 @@ public class Database {
 		// Table 1 creation (Company)
 
 		try {
-
+			System.out.println("test2");
 			java.sql.Statement stmt = conn.createStatement();
+			System.out.println("test3");
 
 			sql = "create table Company("
 
@@ -83,6 +84,7 @@ public class Database {
 					+ "EMAIL varchar(30) not null)";
 
 			stmt.executeUpdate(sql);
+			System.out.println("test4");
 
 			System.out.println("success:" + sql);
 
