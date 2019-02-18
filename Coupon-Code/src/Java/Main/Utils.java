@@ -28,4 +28,9 @@ public class Utils {
 		return "jdbc:derby://localhost:3301/JBDB;create=true";
 	}
 
+	public static Date endDate(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

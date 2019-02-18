@@ -58,7 +58,7 @@ public class Database {
 
 	}
 
-	public static void createTables(Connection con) throws Exception, SQLException {
+	public static void createTables(Connection conn) throws Exception, SQLException {
 
 		// Connection
 
