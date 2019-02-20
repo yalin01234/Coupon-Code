@@ -24,13 +24,6 @@ public class CustomerDBDAO implements CustomerDAO {
 	 * 
 	 * This class implements basic methods between the application level to the DB
 	 * 
-	 * such as C.R.U.D. the logic of the program doesn't implement in this level.
-	 * 
-	 * this level is the only connection to the SQL database,this level uses a
-	 * 
-	 * connection pool as a data access pattern createCustomer removeCustomer
-	 * 
-	 * updateCustomer getCustomer getAllCustomer getCouponByType getCoupons
 	 * 
 	 * 
 	 * 
@@ -96,8 +89,6 @@ public class CustomerDBDAO implements CustomerDAO {
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
-
-			// Handle errors for JDBC
 
 			throw new Exception("Customer creation faild");
 

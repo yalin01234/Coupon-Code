@@ -88,12 +88,10 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		} finally {
 
-			// finally block used to close resources, return the connection pool
-
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -105,7 +103,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -124,10 +122,6 @@ public class CompanyDBDAO implements CompanyDAO {
 		// retrieve the PK by the company name
 
 		Company companyLocal = new Company();
-
-		conn = DriverManager.getConnection(Utils.getDBUrl());
-
-		// Open a connection from the connection pool class
 
 		try {
 
@@ -178,7 +172,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -190,7 +184,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -207,7 +201,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 	}
 
-	public void removeCompanyCoupons(Company company) throws Exception {
+	public void removeCompanyCoupons(Company company) throws Exception { // This method is remove company coupon from
+																			// join tables
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 
@@ -282,7 +277,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -294,7 +289,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -356,7 +351,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -368,7 +363,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -391,8 +386,6 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		Company company = new Company();
 
-		// Open a connection from the connection pool class
-
 		try {
 
 			conn = DriverManager.getConnection(Utils.getDBUrl());
@@ -405,19 +398,19 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
 
 		try {
 
-			stmt = conn.createStatement();
+			String sql1 = "SELECT * FROM COMPANY WHERE ID= ?";
 
-			// build The SQL query
+			pstms = conn.prepareStatement(sql1);
 
-			String sql = "SELECT * FROM COMPANY WHERE ID=" + id;
+			pstms.setLong(1, company.getId());
 
 			// Set the results from the database
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -443,8 +436,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -456,7 +449,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -490,19 +483,16 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
 
 		try {
 
-			stmt = conn.createStatement();
-
-			// build The SQL query
-
 			String sql = "SELECT * FROM COMPANY";
+			pstms = conn.prepareStatement(sql);
 
 			// Set the results from the database
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -532,8 +522,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -545,7 +535,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -578,19 +568,15 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
 
 		try {
-
-			stmt = conn.createStatement();
-
-			// build The SQL query
-
 			String sql = "SELECT * FROM COMPANY";
+			pstms = conn.prepareStatement(sql);
 
 			// Set the results from the database
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -620,8 +606,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -633,7 +619,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -672,19 +658,14 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		// java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
 
 		try {
-
-			stmt = conn.createStatement();
-
-			// build The SQL query
-
 			String sql = "SELECT * FROM COMPANY";
+			pstms = conn.prepareStatement(sql);
 
-			// Set the results from the database
-
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -716,8 +697,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -729,7 +710,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -770,27 +751,28 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
+		PreparedStatement pstms1 = null;
 
-		java.sql.Statement stmt1 = null;
+		// java.sql.Statement stmt = null;
+
+		// java.sql.Statement stmt1 = null;
 
 		try {
+			String sql1 = "SELECT * FROM COUPON";
 
-			stmt = conn.createStatement();
+			String sql2 = "SELECT * FROM COMPANY_COUPON";
+			pstms = conn.prepareStatement(sql1);
 
-			stmt1 = conn.createStatement();
+			pstms1 = conn.prepareStatement(sql2);
 
 			// build The SQL query
 
-			String sql = "SELECT * FROM COUPON";
-
-			String sql1 = "SELECT * FROM COMPANY_COUPON";
-
 			// Set the results from the database,
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
-			ResultSet resultSet2 = stmt1.executeQuery(sql1);
+			ResultSet resultSet2 = pstms1.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -846,8 +828,8 @@ public class CompanyDBDAO implements CompanyDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -859,7 +841,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
