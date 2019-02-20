@@ -412,8 +412,6 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		Customer customer = new Customer();
 
-		// Open a connection from the connection pool class
-
 		try {
 
 			conn = DriverManager.getConnection(Utils.getDBUrl());
@@ -447,6 +445,8 @@ public class CustomerDBDAO implements CustomerDAO {
 			customer.setCustomerName(resultSet.getString(2));
 
 			customer.setPassword(resultSet.getString(3));
+
+			System.out.println("Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
 
 			// TODO - Add the coupons list from the ArrayCollection
 
@@ -937,6 +937,9 @@ public class CustomerDBDAO implements CustomerDAO {
 					customer.setCustomerName(resultSet.getString(2));
 
 					customer.setPassword(resultSet.getString(3));
+
+					System.out.println(
+							"Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
 
 					break;
 
