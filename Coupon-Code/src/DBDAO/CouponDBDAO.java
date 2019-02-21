@@ -21,15 +21,6 @@ public class CouponDBDAO implements CouponDAO {
 	 * 
 	 * This class implements basic methods between the application level to the DB
 	 * 
-	 * such as C.R.U.D. the logic of the program doesn't implement in this level.
-	 * 
-	 * this level is the only connection to the SQL database,this level uses a
-	 * 
-	 * connection pool as a data access pattern Used prepared statements to prevent
-	 * 
-	 * SQL injection createCoupon removeCoupon updateCoupon getCoupon getAllCoupouns
-	 * 
-	 * getCouponByType createCoupon login
 	 * 
 	 * 
 	 * 
@@ -140,7 +131,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -152,7 +143,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -240,7 +231,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -252,7 +243,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -334,7 +325,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -346,7 +337,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -424,7 +415,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstms != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -436,7 +427,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -522,7 +513,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -534,7 +525,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -623,7 +614,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -635,7 +626,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -721,7 +712,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -733,7 +724,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -827,7 +818,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -839,7 +830,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -947,7 +938,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -959,7 +950,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -1031,7 +1022,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
@@ -1043,7 +1034,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 				}
 
 			} catch (Exception e) {
