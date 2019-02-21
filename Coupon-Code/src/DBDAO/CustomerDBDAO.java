@@ -99,7 +99,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -112,7 +112,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -187,7 +187,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -200,7 +200,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -289,7 +289,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -302,7 +302,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -367,7 +367,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstms != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -380,7 +380,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -413,19 +413,22 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		}
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
+		// java.sql.Statement stmt = null;
 
 		try {
+			String sql = "SELECT * FROM CUSTOMER WHERE ID= ?";
 
-			stmt = conn.createStatement();
+			pstms = conn.prepareStatement(sql);
+			pstms.setLong(1, customer.getId());
 
 			// build The SQL query
 
-			String sql = "SELECT * FROM CUSTOMER WHERE ID=" + id;
+			// String sql = "SELECT * FROM CUSTOMER WHERE ID=" + id;
 
 			// Set the results from the database
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -451,8 +454,8 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 
 				}
 
@@ -465,7 +468,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -507,27 +510,32 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		// Define the Execute query
 
-		java.sql.Statement stmt = null;
+		PreparedStatement pstms = null;
+		PreparedStatement pstms1 = null;
+		// java.sql.Statement stmt = null;
 
-		java.sql.Statement stmt1 = null;
+		// java.sql.Statement stmt1 = null;
 
 		try {
-
-			stmt = conn.createStatement();
-
-			stmt1 = conn.createStatement();
-
-			// build The SQL query
-
 			String sql = "SELECT * FROM COUPON";
 
 			String sql1 = "SELECT * FROM CUSTOMER_COUPON";
 
+			pstms = conn.prepareStatement(sql);
+
+			pstms1 = conn.prepareStatement(sql1);
+
+			// build The SQL query
+
+			// String sql = "SELECT * FROM COUPON";
+
+			// String sql1 = "SELECT * FROM CUSTOMER_COUPON";
+
 			// Set the results from the database,
 
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery(sql);
 
-			ResultSet resultSet2 = stmt1.executeQuery(sql1);
+			ResultSet resultSet2 = pstms1.executeQuery(sql1);
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -536,6 +544,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				if (resultSet2.getLong(1) == customerLocaly.getId()) {
 
 					couponIDs.add(resultSet2.getLong(2));
+					System.out.println("testCoupon" + couponIDs);
 
 				}
 
@@ -583,8 +592,8 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			try {
 
-				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+				if (pstms != null) {
+					conn.close();
 
 				}
 
@@ -597,7 +606,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -686,7 +695,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -699,7 +708,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -780,7 +789,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -793,7 +802,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -864,7 +873,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -877,7 +886,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -951,7 +960,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -964,7 +973,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -1047,7 +1056,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
@@ -1060,7 +1069,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn = DriverManager.getConnection(Utils.getDBUrl());
+					conn.close();
 
 				}
 
