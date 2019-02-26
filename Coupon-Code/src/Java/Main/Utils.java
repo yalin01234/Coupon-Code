@@ -1,3 +1,4 @@
+
 package Java.Main;
 
 import java.time.LocalDate;
@@ -5,32 +6,40 @@ import java.util.Date;
 
 public class Utils {
 
-	public static Date getCurrentDate() {
+	public static Date getDate() {
+
 		LocalDate localDate = LocalDate.now();
+
 		Date date = java.sql.Date.valueOf(localDate);
+
 		return date;
+
 	}
 
-	public static Date getExpiredDate() {
+	public static Date endDate(int numDays)
 
-		LocalDate localDate = LocalDate.now();
-		localDate = localDate.plusMonths(1);
+	{
+
+		LocalDate localDate = LocalDate.now().plusDays(numDays);
+
 		Date date = java.sql.Date.valueOf(localDate);
 
 		return date;
+
 	}
 
 	public static String getDriverData() {
+
 		return "org.apache.derby.jdbc.ClientDriver";
+
 	}
 
 	public static String getDBUrl() {
-		return "jdbc:derby://localhost:3301/MyDB;create=true";
-	}
 
-	public static Date endDate(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return "jdbc:derby://localhost:3301/MyDB;create=true";
+
 	}
 
 }
+
+// (year, month, date, hrs, min, sec)
