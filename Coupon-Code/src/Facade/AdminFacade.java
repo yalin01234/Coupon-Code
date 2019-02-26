@@ -27,9 +27,9 @@ public class AdminFacade implements CouponClientFacade {
 	 * 
 	 * removeCompany updateCoupon getCoupon getAllCoupons
 	 * 
-	 */
-
-	/**************************************
+	 * 
+	 * 
+	 * /**************************************
 	 * 
 	 * Attributes
 	 * 
@@ -77,11 +77,13 @@ public class AdminFacade implements CouponClientFacade {
 
 	public void createCompany(Company company) throws Exception {
 
-		Set<Company> allCompanies = new HashSet<Company>();
+		Set<Company> allCompanies = new HashSet<Company>(); // generate array that checks there is only a unique value
+															// in the
+															// array SET is interface that implemented a HashSET class
 
-		allCompanies = compDAO.getAllCompanies();
+		allCompanies = compDAO.getAllCompanies();// Fetch all the company from the DB
 
-		Iterator<Company> itr = allCompanies.iterator();
+		Iterator<Company> itr = allCompanies.iterator();// Fetch the value from the Hasset collection one by one
 
 		while (itr.hasNext()) {
 
@@ -89,11 +91,13 @@ public class AdminFacade implements CouponClientFacade {
 
 			company2 = itr.next();
 
+			System.out.println("testcompany" + company2);
+
 			if (company2 instanceof Company && company2.getCompName().equals(company.getCompName())) {
 
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 
-				JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + " Already Exist");
+				JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + " Already Exsiting");
 
 				return;
 
@@ -113,12 +117,24 @@ public class AdminFacade implements CouponClientFacade {
 
 		// Update the join Table Company_Coupon and remove the company coupons
 
-		compDAO.removeCompanyCoupons(company);
+		Set<Company> allCompanies = new HashSet<Company>();
+		allCompanies = compDAO.getAllCompanies();
+		Iterator<Company> itr = allCompanies.iterator();
+		while (itr.hasNext()) {
 
-		// remove the company
+			Company company2 = new Company();
 
-		compDAO.removeCompany(company);
+			company2 = itr.next();
+			if (company2 instanceof Company && company2.getCompName().equals(company.getCompName())) {
 
+				compDAO.removeCompanyCoupons(company);
+
+				// remove the company
+
+				compDAO.removeCompany(company);
+
+			}
+		}
 	}
 
 	public void updateCompany(Company company, String newPassword, String newEmail) throws Exception {
@@ -129,16 +145,19 @@ public class AdminFacade implements CouponClientFacade {
 
 		companyLocaly = compDAO.getCompany(name);
 
-		/* Update the company details except the company name */
+		if (companyLocaly instanceof Company && companyLocaly.equals(company.getCompName())) {
 
-		company.setId(companyLocaly.getId());
+			/* Update the company details except the company name */
 
-		company.setPassword(newPassword);
+			company.setId(companyLocaly.getId());
 
-		company.setEmail(newEmail);
+			company.setPassword(newPassword);
 
-		compDAO.updateCompany(company);
+			company.setEmail(newEmail);
 
+			compDAO.updateCompany(company);
+
+		}
 	}
 
 	public Company getCompany(long id) throws Exception {
