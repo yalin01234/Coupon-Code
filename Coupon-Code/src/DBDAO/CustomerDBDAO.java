@@ -1,7 +1,6 @@
 package DBDAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +11,11 @@ import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import DB.ConnPool;
 import Java.DB.DAO.CustomerDAO;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.JavaBean.Customer;
-import Java.Main.Utils;
 
 public class CustomerDBDAO implements CustomerDAO {
 
@@ -64,7 +63,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -99,7 +98,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -112,7 +111,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -142,7 +141,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -187,7 +186,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -200,7 +199,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -230,7 +229,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -289,7 +288,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -302,7 +301,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -330,7 +329,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -367,7 +366,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -380,7 +379,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -405,7 +404,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -455,7 +454,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -468,8 +467,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
-
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -500,7 +498,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -593,7 +591,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -606,7 +604,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -632,7 +630,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -695,7 +693,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -708,7 +706,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -740,7 +738,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -789,7 +787,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -802,7 +800,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -826,7 +824,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -873,7 +871,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -886,7 +884,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -908,7 +906,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -960,7 +958,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -973,7 +971,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -997,7 +995,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -1056,7 +1054,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 
@@ -1069,7 +1067,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 
 				}
 

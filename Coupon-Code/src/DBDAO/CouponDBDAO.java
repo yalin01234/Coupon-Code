@@ -2,7 +2,6 @@ package DBDAO;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +9,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import DB.ConnPool;
 import Java.DB.DAO.CouponDAO;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
-import Java.Main.Utils;
 
 public class CouponDBDAO implements CouponDAO {
 
@@ -74,8 +73,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
-
+			conn = ConnPool.getInstance().getConnection();
 		} catch (Exception e) {
 
 			throw new Exception("The Connection is faild");
@@ -131,7 +129,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -143,7 +141,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -170,7 +168,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -231,7 +229,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -243,7 +241,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -268,7 +266,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -325,7 +323,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -337,7 +335,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -364,7 +362,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -415,7 +413,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -427,7 +425,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -452,7 +450,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -513,7 +511,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -525,7 +523,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -550,7 +548,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 		} catch (Exception e) {
 
 			throw new Exception("The Connection is faild");
@@ -614,7 +612,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -626,7 +624,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -649,7 +647,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -712,7 +710,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -724,7 +722,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -745,7 +743,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -818,7 +816,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (stmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -830,7 +828,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -855,7 +853,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -971,7 +969,7 @@ public class CouponDBDAO implements CouponDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -1022,7 +1020,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -1034,7 +1032,7 @@ public class CouponDBDAO implements CouponDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {

@@ -2,12 +2,7 @@ package Java.Main;
 
 import DB.Database;
 import DBDAO.CompanyDBDAO;
-import DBDAO.CouponDBDAO;
-import DBDAO.CustomerDBDAO;
 import Java.JavaBean.Company;
-import Java.JavaBean.Coupon;
-import Java.JavaBean.CouponType;
-import Java.JavaBean.Customer;
 
 public class Test {
 
@@ -23,70 +18,70 @@ public class Test {
 		// Utils.endDate(20), 7000, CouponType.CAMPING, "wtf",
 		// 251, "image");
 
-		Customer customer1 = new Customer(1, "Evi", "345345");
-		Customer customer2 = new Customer(2, "Shay", "567567");
-		Customer customer3 = new Customer(3, "Moahe", "345345");
-		Customer customer4 = new Customer(4, "Eli", "334455");
-		Customer customer5 = new Customer(5, "Yossi", "889977");
-		Customer customer6 = new Customer(6, "Mosheyacov", "852852");
-		Customer customer7 = new Customer(7, "Uria", "0520520");
-		Customer customer8 = new Customer(8, "Leon", "0540540");
-		Customer customer9 = new Customer(9, "Sarge", "546546");
-		Customer customer10 = new Customer(10, "Jurgen", "868686");
+		// Customer customer1 = new Customer(1, "Evi", "345345");
+		// Customer customer2 = new Customer(2, "Shay", "567567");
+		// Customer customer3 = new Customer(3, "Moahe", "345345");
+		// Customer customer4 = new Customer(4, "Eli", "334455");
+		// Customer customer5 = new Customer(5, "Yossi", "889977");
+		// Customer customer6 = new Customer(6, "Mosheyacov", "852852");
+		// Customer customer7 = new Customer(7, "Uria", "0520520");
+		// Customer customer8 = new Customer(8, "Leon", "0540540");
+		// Customer customer9 = new Customer(9, "Sarge", "546546");
+		// Customer customer10 = new Customer(10, "Jurgen", "868686");
 
-		Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60), 1111, CouponType.HEALTH, "wtf", 1251,
-				"image");
-		Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60), 2222, CouponType.HEALTH, "abc", 3356,
-				"image");
-		Coupon coupon3 = new Coupon(3, "Ramon", Utils.getDate(), Utils.endDate(60), 3333, CouponType.HEALTH, "der",
-				4455, "image");
-		Coupon coupon4 = new Coupon(4, "Sarge", Utils.getDate(), Utils.endDate(60), 4444, CouponType.HEALTH, "nmmm",
-				55562, "image");
-		Coupon coupon5 = new Coupon(5, "Moshe", Utils.getDate(), Utils.endDate(60), 5555, CouponType.HEALTH, "111",
-				8888, "image");
+		// Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60),
+		// 1111, CouponType.HEALTH, "wtf", 1251,
+		// "image");
+		// Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60),
+		// 2222, CouponType.HEALTH, "abc", 3356,
+		// "image");
+		// Coupon coupon3 = new Coupon(3, "Ramon", Utils.getDate(), Utils.endDate(60),
+		// 3333, CouponType.HEALTH, "der",
+		// 4455, "image");
+		// Coupon coupon4 = new Coupon(4, "Sarge", Utils.getDate(), Utils.endDate(60),
+		// 4444, CouponType.HEALTH, "nmmm",
+		// 55562, "image");
+		// Coupon coupon5 = new Coupon(5, "Moshe", Utils.getDate(), Utils.endDate(60),
+		// 5555, CouponType.HEALTH, "111",
+		// 8888, "image");
 
-		Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
-		Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
-		Company company3 = new Company(3, "Checkmarx", "121212", "Uria@test.com");
-		Company company4 = new Company(4, "Greenlight", "445566", "Leon@test.com");
-		Company company5 = new Company(5, "Kobicom", "889944", "Meital@test.com");
-		Company company6 = new Company(6, "Amdocs", "525252", "Jurgen@test.com");
-		Company company7 = new Company(7, "Giga", "665588", "Serge@test.com");
-		Company company8 = new Company(8, "Huhuea", "889955", "Emual@test.com");
-		Company company9 = new Company(9, "Moshecom", "585858", "David@test.com");
-		Company company10 = new Company(10, "Yyuvalcom", "4454545", "Ramon@test.com");
+		// Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
+		// Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
+		// Company company3 = new Company(3, "Checkmarx", "121212", "Uria@test.com");
+		// Company company4 = new Company(4, "Greenlight", "445566", "Leon@test.com");
+		// Company company5 = new Company(5, "Kobicom", "889944", "Meital@test.com");
+		// Company company6 = new Company(6, "Amdocs", "525252", "Jurgen@test.com");
+		// Company company7 = new Company(7, "Giga", "665588", "Serge@test.com");
+		// Company company8 = new Company(8, "Huhuea", "889955", "Emual@test.com");
+		// Company company9 = new Company(9, "Moshecom", "585858", "David@test.com");
+		// Company company10 = new Company(10, "Yyuvalcom", "4454545",
+		// "Ramon@test.com");
+
+		Company company11 = new Company(11, "Nanalcom", "55669988", "Oren@test.com");
 
 		CompanyDBDAO companyDBDAO = new CompanyDBDAO();
-		companyDBDAO.createCompany(company1);
-		companyDBDAO.createCompany(company2);
-		companyDBDAO.createCompany(company3);
-		companyDBDAO.createCompany(company4);
-		companyDBDAO.createCompany(company5);
-		companyDBDAO.createCompany(company6);
-		companyDBDAO.createCompany(company7);
-		companyDBDAO.createCompany(company8);
-		companyDBDAO.createCompany(company9);
-		companyDBDAO.createCompany(company10);
 
-		CustomerDBDAO customerDBDAO = new CustomerDBDAO();
-		customerDBDAO.createCustomer(customer1);
-		customerDBDAO.createCustomer(customer2);
-		customerDBDAO.createCustomer(customer3);
-		customerDBDAO.createCustomer(customer4);
-		customerDBDAO.createCustomer(customer5);
-		customerDBDAO.createCustomer(customer6);
-		customerDBDAO.createCustomer(customer7);
-		customerDBDAO.createCustomer(customer8);
-		customerDBDAO.createCustomer(customer9);
-		customerDBDAO.createCustomer(customer10);
+		companyDBDAO.createCompany(company11);
 
-		CouponDBDAO couponDBDAO = new CouponDBDAO();
+		// CustomerDBDAO customerDBDAO = new CustomerDBDAO();
+		// customerDBDAO.createCustomer(customer1);
+		// customerDBDAO.createCustomer(customer2);
+		// customerDBDAO.createCustomer(customer3);
+		// customerDBDAO.createCustomer(customer4);
+		// customerDBDAO.createCustomer(customer5);
+		// customerDBDAO.createCustomer(customer6);
+		// customerDBDAO.createCustomer(customer7);
+		// customerDBDAO.createCustomer(customer8);
+		// customerDBDAO.createCustomer(customer9);
+		// customerDBDAO.createCustomer(customer10);
 
-		couponDBDAO.createCoupon(coupon1);
-		couponDBDAO.createCoupon(coupon2);
-		couponDBDAO.createCoupon(coupon3);
-		couponDBDAO.createCoupon(coupon4);
-		couponDBDAO.createCoupon(coupon5);
+		// CouponDBDAO couponDBDAO = new CouponDBDAO();
+
+		// couponDBDAO.createCoupon(coupon1);
+		// couponDBDAO.createCoupon(coupon2);
+		// couponDBDAO.createCoupon(coupon3);
+		// couponDBDAO.createCoupon(coupon4);
+		// couponDBDAO.createCoupon(coupon5);
 
 		// customerDBDAO.getCustomer(1);
 		// customerDBDAO.printAllCustmers();

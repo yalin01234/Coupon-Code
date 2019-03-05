@@ -1,7 +1,6 @@
 package DBDAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,11 +12,11 @@ import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import DB.ConnPool;
 import Java.DB.DAO.CompanyDAO;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
-import Java.Main.Utils;
 
 public class CompanyDBDAO implements CompanyDAO {
 
@@ -56,7 +55,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -91,7 +90,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -103,7 +102,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -125,8 +124,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
-
+			conn = ConnPool.getInstance().getConnection();
 		} catch (Exception e) {
 
 			throw new Exception("The Connection is faild");
@@ -172,7 +170,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -184,7 +182,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -214,8 +212,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
-
+			conn = ConnPool.getInstance().getConnection();
 		} catch (SQLException e2) {
 
 			throw new Exception("The Connection is faild");
@@ -277,7 +274,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstmt != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -289,7 +286,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -310,7 +307,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -351,7 +348,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -363,7 +360,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -388,7 +385,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -437,7 +434,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -449,7 +446,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -473,7 +470,7 @@ public class CompanyDBDAO implements CompanyDAO {
 		try {
 
 			// conn = DriverManager.getConnection(getDBUrl());
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -523,7 +520,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -535,7 +532,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -558,7 +555,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -607,7 +604,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -619,7 +616,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -648,7 +645,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -698,7 +695,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -710,7 +707,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -741,7 +738,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		try {
 
-			conn = DriverManager.getConnection(Utils.getDBUrl());
+			conn = ConnPool.getInstance().getConnection();
 
 		} catch (Exception e) {
 
@@ -829,7 +826,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (pstms != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
@@ -841,7 +838,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			try {
 
 				if (conn != null) {
-					conn.close();
+					ConnPool.getInstance().returnConnection(conn);
 				}
 
 			} catch (Exception e) {
