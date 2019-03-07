@@ -1,8 +1,9 @@
 package Java.Main;
 
 import DB.Database;
-import DBDAO.CompanyDBDAO;
-import Java.JavaBean.Company;
+import DBDAO.CouponDBDAO;
+import Java.JavaBean.Coupon;
+import Java.JavaBean.CouponType;
 
 public class Test {
 
@@ -44,6 +45,10 @@ public class Test {
 		// Coupon coupon5 = new Coupon(5, "Moshe", Utils.getDate(), Utils.endDate(60),
 		// 5555, CouponType.HEALTH, "111",
 		// 8888, "image");
+		Coupon coupon7 = new Coupon(7, "Yuyuyuyu", Utils.getDate(), Utils.endDate(60), 4545454, CouponType.HEALTH,
+				"222222", 789789, "image");
+		Coupon coupon8 = new Coupon(8, "uyuyuyuyuyu", Utils.getDate(), Utils.endDate(60), 123123123, CouponType.HEALTH,
+				"13131313", 852852, "image");
 
 		// Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
 		// Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
@@ -57,11 +62,11 @@ public class Test {
 		// Company company10 = new Company(10, "Yyuvalcom", "4454545",
 		// "Ramon@test.com");
 
-		Company company11 = new Company(11, "Nanalcom", "55669988", "Oren@test.com");
+		// Company company11 = new Company(11, "Nanalcom", "55669988", "Oren@test.com");
 
-		CompanyDBDAO companyDBDAO = new CompanyDBDAO();
+		// CompanyDBDAO companyDBDAO = new CompanyDBDAO();
 
-		companyDBDAO.createCompany(company11);
+		// companyDBDAO.createCompany(company11);
 
 		// CustomerDBDAO customerDBDAO = new CustomerDBDAO();
 		// customerDBDAO.createCustomer(customer1);
@@ -75,7 +80,8 @@ public class Test {
 		// customerDBDAO.createCustomer(customer9);
 		// customerDBDAO.createCustomer(customer10);
 
-		// CouponDBDAO couponDBDAO = new CouponDBDAO();
+		CouponDBDAO couponDBDAO = new CouponDBDAO();
+		couponDBDAO.createCoupon(coupon8, 1);
 
 		// couponDBDAO.createCoupon(coupon1);
 		// couponDBDAO.createCoupon(coupon2);

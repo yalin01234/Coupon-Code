@@ -1,10 +1,6 @@
 package Java.JavaBean;
 
-/**
- * @Author - Yalin
- */
-
-public enum ClientType {
+public enum CustomerType {
 
 	REGULAR, ADMIN, COMPANY;
 

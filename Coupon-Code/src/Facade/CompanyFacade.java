@@ -10,62 +10,37 @@ import javax.swing.JOptionPane;
 
 import DBDAO.CompanyDBDAO;
 import DBDAO.CouponDBDAO;
-import Java.JavaBean.ClientType;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
+import Main.CouponSystem.clientType;
 
 public class CompanyFacade implements CouponClientFacade {
 
 	/**
-	 * 
-	 * This class implements the client level of the system.
-	 * 
-	 * The user login to the system and the instance will be according to the type
-	 * of the client.
-	 * 
-	 * 
-	 * 
-	 * Login
-	 * 
-	 * createCoupon
-	 * 
-	 * removeCoupon
-	 * 
-	 * updateCoupon
-	 * 
-	 * getCoupon
-	 * 
-	 * getAllCoupons
-	 * 
+	 * This class implements the client level of the system. The user login to the
+	 * system and the instance will be according to the type of the client. This
+	 * level should uses the DAO level ( couponDBDAO, CompanyDBDAO ) In this level
+	 * we will implement the logic of the program. It Contains : Login createCoupon
+	 * removeCoupon updateCoupon getCoupon getAllCoupons
 	 */
 
 	/**************************************
 	 * Attributes
 	 *****************************************/
-
 	private Company company = new Company();
-
 	private Connection conn;
-
 	private long ID_comp;
-
 	private String compName = null;
-
 	private String pass = null;
-
 	private CouponDBDAO couponDBDAO = new CouponDBDAO();
-
 	private CompanyDBDAO companyDBDAO = new CompanyDBDAO();
 
 	/***************************************
 	 * CTRO
 	 *********************************************/
-
 	public CompanyFacade() {
-
 		// TODO Auto-generated constructor stub
-
 	}
 
 	/**************************************
@@ -73,81 +48,51 @@ public class CompanyFacade implements CouponClientFacade {
 	 * 
 	 * @throws DBException
 	 *******************************************/
+	public Boolean login(String name, String password, clientType cType) throws Exception {
+		// TODO Auto-generated method stub
+		this.compName = name;
+		this.pass = password;
+		// Create instance locally of company
+		company = getCompany(compName);
+		// Authentication of the password and company name
+		if (company.getCompName().equals(this.compName) && company.getPassword().equals(this.pass) && company != null) {
+			return true;
+		} else {
+			return false;
+		}
 
-	// public Boolean login(String name, String password, ClientType cType) throws
-	// Exception {
-
-	// TODO Auto-generated method stub
-
-	// this.compName = name;
-
-	// this.pass = password;
-
-	// Create instance locally of company
-
-	// company = getCompany(compName);
-
-	// Authentication of the password and company name
-
-	// if (company.getCompName().equals(this.compName) &&
-	// company.getPassword().equals(this.pass) && company != null) {
-
-	// return true;
-
-	// } else {
-	// return false;
-	// }
-
-	// }
+	}
 
 	public void createCoupon(Coupon coupon) throws Exception {
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
-
 		allCoupons = getAllCoupons();
-
 		Iterator<Coupon> itr = allCoupons.iterator();
 
-		while (itr.hasNext())
-
-		{
+		while (itr.hasNext()) {
 
 			Coupon coupon2 = new Coupon();
-
 			coupon2 = itr.next();
-
 			if (coupon2 instanceof Coupon && coupon2.getTitle().equals(coupon.getTitle())) {
-
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 				JOptionPane.showMessageDialog(frame, "Coupon " + coupon.getTitle() + " Already Exist");
-
 				return;
-
 			}
 
 		}
 
 		couponDBDAO.createCoupon(coupon, company.getId());
-
 		JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 		JOptionPane.showMessageDialog(frame, "Created coupon " + coupon.getTitle() + " successfully");
-
 	}
 
 	public void removeCoupon(Coupon coupon) throws Exception {
 
 		// Remove and update Customer_Coupon Table
-
 		couponDBDAO.removeCustomerCoupon(coupon);
-
 		// Remove and update Company_Coupon table
-
 		couponDBDAO.removeCompanyCoupon(coupon);
-
 		// Remove coupon from Coupon table
-
 		couponDBDAO.removeCoupon(coupon);
 
 	}
@@ -159,7 +104,6 @@ public class CompanyFacade implements CouponClientFacade {
 	}
 
 	public Coupon getCoupon(long id) {
-
 		return null;
 
 	}
@@ -167,9 +111,7 @@ public class CompanyFacade implements CouponClientFacade {
 	public Set<Coupon> getAllCoupons() throws Exception
 
 	{
-
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
-
 		allCoupons = couponDBDAO.getAllCoupouns();
 
 		return allCoupons;
@@ -179,27 +121,17 @@ public class CompanyFacade implements CouponClientFacade {
 	public Company getCompany(String compName) throws Exception {
 
 		Company companyLocaly = new Company();
-
 		Set<Company> allCompanies = new HashSet<Company>();
-
 		allCompanies = companyDBDAO.getAllCompanies();
-
 		Iterator<Company> itr = allCompanies.iterator();
 
 		while (itr.hasNext()) {
-
 			companyLocaly = itr.next();
-
-			if (companyLocaly.getCompName().equals(compName))
-
-			{
-
+			if (companyLocaly.getCompName().equals(compName)) {
 				return companyLocaly;
-
 			}
 
 		}
-
 		return null;
 
 	}
@@ -207,25 +139,15 @@ public class CompanyFacade implements CouponClientFacade {
 	public Set<Coupon> getCompanyCoupons(Company company) throws Exception {
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
-
 		allCoupons = companyDBDAO.getCompanyCoupons(company);
 
 		if (!(allCoupons.isEmpty())) {
 
 			return allCoupons;
-
-		}
-
-		else
-
-		{
-
+		} else {
 			JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 			JOptionPane.showMessageDialog(frame, "To a comapny, " + company.getCompName() + " hasn't coupons");
-
 			return null;
-
 		}
 
 	}
@@ -233,21 +155,14 @@ public class CompanyFacade implements CouponClientFacade {
 	public synchronized Set<Coupon> getCouponByType(CouponType type) throws Exception {
 
 		Set<Coupon> coupons2 = new HashSet<Coupon>();
-
 		Set<Coupon> coupons = new HashSet<Coupon>();
-
 		coupons = getCompanyCoupons(company);
-
 		Iterator<Coupon> itr = coupons.iterator();
 
 		while (itr.hasNext()) {
-
 			Coupon coupon2 = new Coupon();
-
 			coupon2 = itr.next();
-
 			// Check the type of the Coupon
-
 			if (type.equals(coupon2.getType())) {
 
 				coupons2.add(coupon2);
@@ -255,40 +170,28 @@ public class CompanyFacade implements CouponClientFacade {
 			}
 
 		}
-
 		if (coupons2.isEmpty()) {
 
 			JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 			JOptionPane.showMessageDialog(frame,
 					"To comapny, " + company.getCompName() + " hasn't coupons in type" + type.name());
-
 			return null;
-
 		}
 
 		return coupons2;
-
 	}
 
 	public synchronized Set<Coupon> getCouponsByPrice(Double priceLimt) throws Exception {
 
 		Set<Coupon> coupons2 = new HashSet<Coupon>();
-
 		Set<Coupon> coupons = new HashSet<Coupon>();
-
 		coupons = getCompanyCoupons(company);
-
 		Iterator<Coupon> itr = coupons.iterator();
 
 		while (itr.hasNext()) {
-
 			Coupon coupon2 = new Coupon();
-
 			coupon2 = itr.next();
-
 			// Check the type of the Coupon
-
 			if (priceLimt >= coupon2.getPrice()) {
 
 				coupons2.add(coupon2);
@@ -296,16 +199,12 @@ public class CompanyFacade implements CouponClientFacade {
 			}
 
 		}
-
 		if (coupons2.isEmpty()) {
 
 			JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 			JOptionPane.showMessageDialog(frame,
 					"To comapny , " + company.getCompName() + " hasn't coupons that cost " + priceLimt);
-
 			return null;
-
 		}
 
 		return coupons2;
@@ -315,21 +214,14 @@ public class CompanyFacade implements CouponClientFacade {
 	public synchronized Set<Coupon> getCouponsByExpiredDate(java.util.Date date) throws Exception {
 
 		Set<Coupon> coupons2 = new HashSet<Coupon>();
-
 		Set<Coupon> coupons = new HashSet<Coupon>();
-
 		coupons = getCompanyCoupons(company);
-
 		Iterator<Coupon> itr = coupons.iterator();
 
 		while (itr.hasNext()) {
-
 			Coupon coupon2 = new Coupon();
-
 			coupon2 = itr.next();
-
 			// Check the type of the Coupon
-
 			if (date.compareTo(coupon2.getEndDate()) > 0) {
 
 				coupons2.add(coupon2);
@@ -337,26 +229,15 @@ public class CompanyFacade implements CouponClientFacade {
 			}
 
 		}
-
 		if (coupons2.isEmpty()) {
 
 			JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-
 			JOptionPane.showMessageDialog(frame,
 					"To comapny , " + company.getCompName() + " hasn't coupons before date" + date);
-
 			return null;
-
 		}
 
 		return coupons2;
-
-	}
-
-	@Override
-	public CouponClientFacade login(String name, String password, ClientType clientType) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

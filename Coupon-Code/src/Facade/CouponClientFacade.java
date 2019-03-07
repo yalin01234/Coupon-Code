@@ -1,12 +1,9 @@
 package Facade;
 
-import Java.JavaBean.ClientType;
+import Main.CouponSystem.clientType;
 
 public interface CouponClientFacade {
 
-	// determine which login type ( Administrator / User/ Company) -
-	// to return the correct Facade
-
-	public CouponClientFacade login(String name, String password, ClientType clientType);
+	public Boolean login(String name, String password, clientType cType) throws Exception;
 
 }
