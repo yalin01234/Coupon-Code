@@ -13,7 +13,7 @@ import DBDAO.CouponDBDAO;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
-import Main.CouponSystem.clientType;
+import Java.Main.CouponSystem.clientType;
 
 public class CompanyFacade implements CouponClientFacade {
 
@@ -48,6 +48,7 @@ public class CompanyFacade implements CouponClientFacade {
 	 * 
 	 * @throws DBException
 	 *******************************************/
+	@Override
 	public Boolean login(String name, String password, clientType cType) throws Exception {
 		// TODO Auto-generated method stub
 		this.compName = name;

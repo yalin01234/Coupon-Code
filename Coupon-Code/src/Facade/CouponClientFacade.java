@@ -1,6 +1,6 @@
 package Facade;
 
-import Main.CouponSystem.clientType;
+import Java.Main.CouponSystem.clientType;
 
 public interface CouponClientFacade {
 

@@ -11,7 +11,7 @@ import DBDAO.CompanyDBDAO;
 import DBDAO.CustomerDBDAO;
 import Java.JavaBean.Company;
 import Java.JavaBean.Customer;
-import Main.CouponSystem.clientType;
+import Java.Main.CouponSystem.clientType;
 
 public class AdminFacade implements CouponClientFacade {
 

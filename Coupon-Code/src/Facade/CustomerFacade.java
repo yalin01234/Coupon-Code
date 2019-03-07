@@ -12,7 +12,7 @@ import DBDAO.CustomerDBDAO;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.JavaBean.Customer;
-import Main.CouponSystem.clientType;
+import Java.Main.CouponSystem.clientType;
 
 public class CustomerFacade implements CouponClientFacade {
 
