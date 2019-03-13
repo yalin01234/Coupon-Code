@@ -60,8 +60,9 @@ public class AdminFacade implements CouponClientFacade {
 			Company company2 = new Company();
 			company2 = itr.next();
 			if (company2 instanceof Company && company2.getCompName().equals(company.getCompName())) {
-				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-				JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + " Already Exist");
+				// JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+				// JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + "
+				// Already Exist");
 				return;
 			}
 
