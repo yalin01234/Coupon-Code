@@ -26,8 +26,7 @@ public class CustomerDBDAO implements CustomerDAO {
 	 * 
 	 * 
 	 * 
-	 * @throws DBException
-	 *             login
+	 * 
 	 * 
 	 */
 
@@ -123,7 +122,8 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		}
 
-		System.out.println("Customer " + customer.getCustomerName() + " inserted successfully");
+		// System.out.println("Customer " + customer.getCustomerName() + " inserted
+		// successfully");
 
 	}
 
@@ -221,7 +221,8 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 
-		allCoupons = getCustomerCoupons(customer);
+		allCoupons = getCustomerCoupons(customer); // Fetch Customer Coupons from getCustomerCoupon Method according to
+													// Customer
 
 		long id;
 
@@ -323,7 +324,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		Customer customerLocaly = new Customer();
 
-		customerLocaly = getCustomer(customer.getCustomerName());
+		customerLocaly = getCustomer(customer.getCustomerName()); // Fetch
 
 		// Open a connection from the connection pool class
 
@@ -492,7 +493,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		Customer customerLocaly = new Customer();
 
-		customerLocaly = getCustomer(customer.getCustomerName());
+		customerLocaly = getCustomer(customer.getCustomerName());// Approach to getCustomer with customer name
 
 		// Open a connection from the connection pool class
 
@@ -531,13 +532,13 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			// Set the results from the database,
 
-			ResultSet resultSet = pstms.executeQuery(sql);
+			ResultSet resultSet = pstms.executeQuery(sql); // Fetch all Coupon
 
 			ResultSet resultSet2 = pstms1.executeQuery(sql1);
 
 			// constructor the object, retrieve the attributes from the results
 
-			while (resultSet2.next()) {
+			while (resultSet2.next()) { // Fetch all the Coupon ID from Customer Coupon Table
 
 				if (resultSet2.getLong(1) == customerLocaly.getId()) {
 
@@ -548,7 +549,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			}
 
-			while (resultSet.next()) {
+			while (resultSet.next()) { // Fetch all Coupon from Coupon table
 
 				if (couponIDs.contains(resultSet.getLong(1))) {
 
@@ -575,6 +576,7 @@ public class CustomerDBDAO implements CustomerDAO {
 					coupon.setImage(resultSet.getString(9));
 
 					coupons.add(coupon);
+					System.out.println(coupons);
 
 				}
 
@@ -620,7 +622,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 	}
 
-	public Set<Coupon> getCoupons() throws Exception {
+	public Set<Coupon> getCoupons() throws Exception { // Fetch all Coupons for SET collection
 
 		Set<Coupon> coupons = new HashSet<Coupon>();
 
@@ -679,6 +681,8 @@ public class CustomerDBDAO implements CustomerDAO {
 				coupon.setImage(resultSet.getString(9));
 
 				coupons.add(coupon);
+
+				System.out.println(coupons);
 
 			}
 
@@ -773,7 +777,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				customer.setPassword(resultSet.getString(3));
 
 				customers.add(customer);
-
+				System.out.println(customers);
 			}
 
 		} catch (SQLException e) {
@@ -898,44 +902,24 @@ public class CustomerDBDAO implements CustomerDAO {
 
 	}
 
-	public Customer getCustomer(String CUST_NAME) throws Exception {
+	public Customer getCustomer(String CUST_NAME) throws Exception { // This method is returning only one customer
 
 		Customer customer = new Customer();
-
-		// Open a connection from the connection pool class
-
 		try {
-
 			conn = ConnPool.getInstance().getConnection();
-
 		} catch (Exception e) {
-
-			throw new Exception("The Connection is faild");
-
+			new Exception("The Connection is Faild ");
 		}
-
 		java.sql.Statement stmt = null;
-
 		try {
-
 			stmt = conn.createStatement();
-
 			String sql = "SELECT * FROM CUSTOMER";
-
-			// Set the results from the database
-
 			ResultSet resultSet = stmt.executeQuery(sql);
-
 			while (resultSet.next()) {
-
 				if (resultSet.getString(2).equals(CUST_NAME)) {
-
 					customer.setId(resultSet.getLong(1));
-
 					customer.setCustomerName(resultSet.getString(2));
-
 					customer.setPassword(resultSet.getString(3));
-
 					System.out.println(
 							"Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
 

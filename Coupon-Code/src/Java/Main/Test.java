@@ -2,11 +2,13 @@ package Java.Main;
 
 import DB.Database;
 import DBDAO.CouponDBDAO;
+import DBDAO.CustomerDBDAO;
 import Facade.AdminFacade;
 import Facade.CompanyFacade;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
+import Java.JavaBean.Customer;
 
 public class Test {
 
@@ -67,11 +69,36 @@ public class Test {
 				"image");
 		Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60), 2222, CouponType.HEALTH, "abc", 3356,
 				"image");
+
+		Customer customer1 = new Customer(1, "Evi", "898989");
+		Customer customer2 = new Customer(2, "Shay", "567567");
 		AdminFacade adminFacade = new AdminFacade();
+		CustomerDBDAO customerDBDAO = new CustomerDBDAO();
+		customerDBDAO.updateCustomer(customer1);
+		// adminFacade.createCompany(company1);
+		// adminFacade.createCompany(company2);
+
+		// adminFacade.removeCompany(company2);
+		// adminFacade.removeCompany(company1);
+		// adminFacade.getAllCompanies();
+		// adminFacade.updateCustomer(customer1);
+		// adminFacade.createCustomer(customer2);
+
+		// adminFacade.updateCustomer(customer1);
+
 		CompanyFacade companyFacade = new CompanyFacade();
 		CouponDBDAO couponDBDAO = new CouponDBDAO();
-		couponDBDAO.createCoupon(coupon1, 1);
-		couponDBDAO.createCoupon(coupon2, 2);
+
+		// couponDBDAO.createCoupon(coupon1, 1);
+		// couponDBDAO.createCoupon(coupon2, 2);
+
+		// adminFacade.removeCompany(company2);
+		// couponDBDAO.removeCoupon(coupon1);
+		// couponDBDAO.removeCustomerCoupon(coupon2);
+
+		// couponDBDAO.createCoupon(coupon1, 1);
+		// couponDBDAO.createCoupon(coupon2, 2);
+
 		// companyFacade.createCoupon(coupon1);
 		// companyFacade.createCoupon(coupon2);
 

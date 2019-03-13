@@ -494,18 +494,14 @@ public class CompanyDBDAO implements CompanyDAO {
 			// constructor the object, retrieve the attributes from the results
 
 			while (resultSet.next()) {
-
 				Company company = new Company();
-
 				company.setId(resultSet.getLong(1));
-
 				company.setCompName(resultSet.getString(2));
-
 				company.setPassword(resultSet.getString(3));
-
 				company.setEmail(resultSet.getString(4));
 
 				companies.add(company);
+				System.out.println(companies);
 
 			}
 

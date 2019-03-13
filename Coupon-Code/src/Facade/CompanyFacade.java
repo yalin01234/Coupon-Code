@@ -65,11 +65,9 @@ public class CompanyFacade implements CouponClientFacade {
 	}
 
 	public void createCoupon(Coupon coupon) throws Exception {
-
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = getAllCoupons();
 		Iterator<Coupon> itr = allCoupons.iterator();
-
 		while (itr.hasNext()) {
 
 			Coupon coupon2 = new Coupon();

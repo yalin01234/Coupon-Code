@@ -735,6 +735,7 @@ public class CouponDBDAO implements CouponDAO {
 
 	}
 
+	@Override
 	public synchronized Set<Coupon> getCouponByType(Coupon coupon) throws Exception {
 
 		Set<Coupon> coupons = new HashSet<Coupon>();
@@ -800,6 +801,7 @@ public class CouponDBDAO implements CouponDAO {
 					coupon1.setImage(resultSet.getString(9));
 
 					coupons.add(coupon1);
+					System.out.println(coupons);
 
 				}
 
@@ -913,10 +915,11 @@ public class CouponDBDAO implements CouponDAO {
 	}
 
 	// @Override
-	// public void createCoupon(Coupon coupon) throws Exception {
-	// TODO Auto-generated method stub
+	@Override
+	public void createCoupon(Coupon coupon) throws Exception {
+		// TODO Auto-generated method stub
 
-	// }
+	}
 }
 
 // @Override

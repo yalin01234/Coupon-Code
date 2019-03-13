@@ -14,7 +14,7 @@ public interface CouponDAO {
 	 * @throws Exception
 	 */
 
-	// void createCoupon(Coupon coupon) throws Exception;
+	void createCoupon(Coupon coupon) throws Exception;
 
 	void removeCoupon(Coupon coupon) throws Exception;
 

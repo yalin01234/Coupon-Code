@@ -107,6 +107,7 @@ public class AdminFacade implements CouponClientFacade {
 	public Set<Company> getAllCompanies() throws Exception {
 
 		return compDAO.getAllCompanies();
+
 	}
 
 	public void createCustomer(Customer customer) throws Exception {
