@@ -54,16 +54,21 @@ public class AdminFacade implements CouponClientFacade {
 
 		Set<Company> allCompanies = new HashSet<Company>();
 		allCompanies = compDAO.getAllCompanies();
+		// System.out.println(allCompanies);
+
 		Iterator<Company> itr = allCompanies.iterator();
 
 		while (itr.hasNext()) {
-			Company company2 = new Company();
-			company2 = itr.next();
-			if (company2 instanceof Company && company2.getCompName().equals(company.getCompName())) {
+			Company company3 = new Company();
+			company3 = itr.next();
+			if (company3 instanceof Company && company3.getCompName().equals(company.getCompName())) {
+				// comparing the creating of the new company if it is a company object and also
+				// if it already existing in the system
 				// JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 				// JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + "
 				// Already Exist");
 				return;
+
 			}
 
 		}

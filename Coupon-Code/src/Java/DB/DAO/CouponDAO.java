@@ -4,13 +4,17 @@ import java.util.Set;
 
 import Java.JavaBean.Coupon;
 
-/**
- * @Author - Oriel
- */
-
 public interface CouponDAO {
 
-	void createCoupon(Coupon coupon) throws Exception;
+	/**
+	 * This interface defines all the methods are should implement in the
+	 * CustomerDBDAO. It Contains : createCoupon removeCoupon updateCoupon getCoupon
+	 * getAllCoupouns getCouponByType createCoupon
+	 * 
+	 * @throws Exception
+	 */
+
+	// void createCoupon(Coupon coupon) throws Exception;
 
 	void removeCoupon(Coupon coupon) throws Exception;
 
@@ -19,5 +23,9 @@ public interface CouponDAO {
 	Coupon getCoupon(long id) throws Exception;
 
 	Set<Coupon> getAllCoupouns() throws Exception;
+
+	Set<Coupon> getCouponByType(Coupon coupon) throws Exception;
+
+	public void createCoupon(Coupon coupon, long id) throws Exception;
 
 }

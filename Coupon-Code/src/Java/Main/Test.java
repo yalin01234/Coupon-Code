@@ -2,6 +2,9 @@ package Java.Main;
 
 import DB.Database;
 import DBDAO.CouponDBDAO;
+import Facade.AdminFacade;
+import Facade.CompanyFacade;
+import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 
@@ -12,9 +15,15 @@ public class Test {
 		Class.forName("org.apache.derby.jdbc.ClientDriver");
 
 		Database.getDatabase();
+		// Company company12 = new Company(12, "Walla", "3344556677",
+		// "Ruobem@test.com");
+
+		// adminFacade.removeCompany(company12);
+
+		// Company company12 = new Company(12, "Walla", "3344556677",
+		// "Ruobem@test.com");
 
 		// Company company = new Company(2, "Shoshana", "12345", "oriel@test.com");
-
 		// Coupon coupon = new Coupon(4, "ConnPool", Utils.getDriverData(),
 		// Utils.endDate(20), 7000, CouponType.CAMPING, "wtf",
 		// 251, "image");
@@ -45,13 +54,30 @@ public class Test {
 		// Coupon coupon5 = new Coupon(5, "Moshe", Utils.getDate(), Utils.endDate(60),
 		// 5555, CouponType.HEALTH, "111",
 		// 8888, "image");
-		Coupon coupon7 = new Coupon(7, "Yuyuyuyu", Utils.getDate(), Utils.endDate(60), 4545454, CouponType.HEALTH,
-				"222222", 789789, "image");
-		Coupon coupon8 = new Coupon(8, "uyuyuyuyuyu", Utils.getDate(), Utils.endDate(60), 123123123, CouponType.HEALTH,
-				"13131313", 852852, "image");
+		// Coupon coupon7 = new Coupon(7, "Yuyuyuyu", Utils.getDate(),
+		// Utils.endDate(60), 4545454, CouponType.HEALTH,
+		// "222222", 789789, "image");
+		// Coupon coupon8 = new Coupon(8, "uyuyuyuyuyu", Utils.getDate(),
+		// Utils.endDate(60), 123123123, CouponType.HEALTH,
+		// "13131313", 852852, "image");
 
-		// Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
-		// Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
+		Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
+		Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
+		Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60), 1111, CouponType.HEALTH, "wtf", 1251,
+				"image");
+		Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60), 2222, CouponType.HEALTH, "abc", 3356,
+				"image");
+		AdminFacade adminFacade = new AdminFacade();
+		CompanyFacade companyFacade = new CompanyFacade();
+		CouponDBDAO couponDBDAO = new CouponDBDAO();
+		couponDBDAO.createCoupon(coupon1, 1);
+		couponDBDAO.createCoupon(coupon2, 2);
+		// companyFacade.createCoupon(coupon1);
+		// companyFacade.createCoupon(coupon2);
+
+		// adminFacade.createCompany(company1);
+		// adminFacade.createCompany(company2);
+
 		// Company company3 = new Company(3, "Checkmarx", "121212", "Uria@test.com");
 		// Company company4 = new Company(4, "Greenlight", "445566", "Leon@test.com");
 		// Company company5 = new Company(5, "Kobicom", "889944", "Meital@test.com");
@@ -63,6 +89,8 @@ public class Test {
 		// "Ramon@test.com");
 
 		// Company company11 = new Company(11, "Nanalcom", "55669988", "Oren@test.com");
+		// Company company12 = new Company(12, "Walla", "3344556677",
+		// "Ruobem@test.com");
 
 		// CompanyDBDAO companyDBDAO = new CompanyDBDAO();
 
@@ -80,8 +108,8 @@ public class Test {
 		// customerDBDAO.createCustomer(customer9);
 		// customerDBDAO.createCustomer(customer10);
 
-		CouponDBDAO couponDBDAO = new CouponDBDAO();
-		couponDBDAO.createCoupon(coupon8, 1);
+		// CouponDBDAO couponDBDAO = new CouponDBDAO();
+		// couponDBDAO.createCoupon(coupon8, 1);
 
 		// couponDBDAO.createCoupon(coupon1);
 		// couponDBDAO.createCoupon(coupon2);

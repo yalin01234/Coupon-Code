@@ -843,8 +843,8 @@ public class CouponDBDAO implements CouponDAO {
 
 	}
 
+	@Override
 	public void createCoupon(Coupon coupon, long comp_id) throws Exception {
-
 		this.id = comp_id;
 		long idPK = 0;
 
@@ -912,11 +912,11 @@ public class CouponDBDAO implements CouponDAO {
 
 	}
 
-	@Override
-	public void createCoupon(Coupon coupon) throws Exception {
-		// TODO Auto-generated method stub
+	// @Override
+	// public void createCoupon(Coupon coupon) throws Exception {
+	// TODO Auto-generated method stub
 
-	}
+	// }
 }
 
 // @Override
