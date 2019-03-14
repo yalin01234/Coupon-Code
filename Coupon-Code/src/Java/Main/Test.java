@@ -9,6 +9,7 @@ import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.JavaBean.Customer;
+import Java.Main.CouponSystem.clientType;
 
 public class Test {
 
@@ -72,9 +73,31 @@ public class Test {
 
 		Customer customer1 = new Customer(1, "Evi", "898989");
 		Customer customer2 = new Customer(2, "Shay", "567567");
+
 		AdminFacade adminFacade = new AdminFacade();
+
 		CustomerDBDAO customerDBDAO = new CustomerDBDAO();
-		customerDBDAO.updateCustomer(customer1);
+
+		/********* Admin **************/
+		AdminFacade adminFacade2 = new AdminFacade();
+		adminFacade2 = (AdminFacade) CouponSystem.getCouponSystem().login("admin", "12346", clientType.Admin);
+		if (adminFacade2 != null) {
+			adminFacade2.createCompany(company1);
+		}
+
+		// customerDBDAO.purchaseCoupon(coupon1, customer1);
+		// customerDBDAO.getCustomer1("898989");
+
+		// customerDBDAO.createCustomer(customer2);
+		// customerDBDAO.getCustomer("Evi");
+		// customerDBDAO.getCoupons();
+		// customerDBDAO.getAllCustomer();
+		// customerDBDAO.getCustomerCoupons(customer1);
+		// customerDBDAO.printAllCustmers();
+
+		// customerDBDAO.updateCustomer(customer1);
+		// customerDBDAO.
+
 		// adminFacade.createCompany(company1);
 		// adminFacade.createCompany(company2);
 

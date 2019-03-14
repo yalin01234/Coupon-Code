@@ -971,6 +971,75 @@ public class CustomerDBDAO implements CustomerDAO {
 
 	}
 
+	public Customer getCustomer1(String PASSWORD) throws Exception {
+		Customer customer = new Customer();
+
+		try {
+			conn = ConnPool.getInstance().getConnection();
+		} catch (Exception e) {
+			new Exception("The Connection is Faild ");
+		}
+		java.sql.Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM CUSTOMER";
+			ResultSet resultSet = stmt.executeQuery(sql);
+			while (resultSet.next()) {
+				if (resultSet.getString(3).equals(PASSWORD)) {
+					customer.setId(resultSet.getLong(1));
+					customer.setCustomerName(resultSet.getString(2));
+					customer.setPassword(resultSet.getString(3));
+					System.out.println("test99");
+					System.out.println(
+							"Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
+
+					break;
+				}
+
+			}
+
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+
+			throw new Exception("get customer failed");
+
+		} finally {
+
+			// finally block used to close resources
+
+			try {
+
+				if (stmt != null) {
+					ConnPool.getInstance().returnConnection(conn);
+
+				}
+
+			} catch (Exception e) {
+
+				throw new Exception("The close connection action faild");
+
+			}
+
+			try {
+
+				if (conn != null) {
+					ConnPool.getInstance().returnConnection(conn);
+
+				}
+
+			} catch (Exception e) {
+
+				throw new Exception("The close connection action faild");
+
+			}
+
+		}
+
+		return customer;
+
+	}
+
 	public void purchaseCoupon(Coupon coupon, Customer customer) throws Exception {
 
 		long idPK = 0;
