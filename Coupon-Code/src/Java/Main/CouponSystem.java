@@ -13,7 +13,9 @@ public class CouponSystem {
 
 	private static CouponSystem instance = new CouponSystem();
 
-	/************************************** GET-DAO ******************************/
+	/**************************************
+	 * Client Type enum
+	 ******************************/
 
 	public enum clientType {
 		Admin, Customer, Company, CustomerGold, CustomerSilver
