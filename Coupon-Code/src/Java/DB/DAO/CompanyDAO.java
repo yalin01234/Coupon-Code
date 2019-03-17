@@ -18,6 +18,8 @@ public interface CompanyDAO {
 
 	Company getCompany(long id) throws Exception;
 
+	Company getCompanybyPW(String password) throws Exception;
+
 	Set<Company> getAllCompanies() throws Exception;
 
 }

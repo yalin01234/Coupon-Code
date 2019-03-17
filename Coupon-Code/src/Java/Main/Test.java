@@ -66,6 +66,7 @@ public class Test {
 
 		Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
 		Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
+		Company company3 = new Company(3, "UTREEEE", "55662322", "Utr@test.com");
 		Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60), 1111, CouponType.HEALTH, "wtf", 1251,
 				"image");
 		Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60), 2222, CouponType.HEALTH, "abc", 3356,
@@ -74,7 +75,7 @@ public class Test {
 		Customer customer1 = new Customer(1, "Evi", "898989");
 		Customer customer2 = new Customer(2, "Shay", "567567");
 
-		AdminFacade adminFacade = new AdminFacade();
+		// AdminFacade adminFacade = new AdminFacade();
 
 		CustomerDBDAO customerDBDAO = new CustomerDBDAO();
 
@@ -82,7 +83,11 @@ public class Test {
 		AdminFacade adminFacade2 = new AdminFacade();
 		adminFacade2 = (AdminFacade) CouponSystem.getCouponSystem().login("admin", "12346", clientType.Admin);
 		if (adminFacade2 != null) {
-			adminFacade2.createCompany(company1);
+			// adminFacade2.createCompany(company3);
+			adminFacade2.getAllCompanies();
+			adminFacade2.getAllCustomers();
+			// adminFacade2.getCompanybyPW("55662322");
+
 		}
 
 		// customerDBDAO.purchaseCoupon(coupon1, customer1);

@@ -28,7 +28,7 @@ public class AdminFacade implements CouponClientFacade {
 	private CompanyDBDAO compDAO = new CompanyDBDAO();
 	private CustomerDBDAO custDAO = new CustomerDBDAO();
 	private final String name = "admin";
-	private final String pass = "1234";
+	private final String pass = "12346";
 
 	/****************************************
 	 * CTRO
@@ -54,7 +54,8 @@ public class AdminFacade implements CouponClientFacade {
 
 		Set<Company> allCompanies = new HashSet<Company>();
 		allCompanies = compDAO.getAllCompanies();
-		// System.out.println(allCompanies);
+		// System.out.println(allCompanies); - Option to print all the companies to
+		// console
 
 		Iterator<Company> itr = allCompanies.iterator();
 
@@ -64,9 +65,8 @@ public class AdminFacade implements CouponClientFacade {
 			if (company3 instanceof Company && company3.getCompName().equals(company.getCompName())) {
 				// comparing the creating of the new company if it is a company object and also
 				// if it already existing in the system
-				// JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-				// JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + "
-				// Already Exist");
+				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+				JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + "Already Exist");
 				return;
 
 			}
@@ -80,7 +80,8 @@ public class AdminFacade implements CouponClientFacade {
 
 	public void removeCompany(Company company) throws Exception {
 
-		// Update the join Table Company_Coupon and remove the company coupons
+		// Update the join Table Company_Coupon and remove the company coupons , first
+		// we have to remove the sub-table and the main
 		compDAO.removeCompanyCoupons(company);
 		// remove the company
 		compDAO.removeCompany(company);
@@ -101,6 +102,12 @@ public class AdminFacade implements CouponClientFacade {
 	public Company getCompany(long id) throws Exception {
 
 		return compDAO.getCompany(id);
+
+	}
+
+	public Company getCompanybyPW(String password) throws Exception {
+
+		return compDAO.getCompanybyPW(password);
 
 	}
 

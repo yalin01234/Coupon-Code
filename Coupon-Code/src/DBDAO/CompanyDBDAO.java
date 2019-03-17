@@ -378,6 +378,77 @@ public class CompanyDBDAO implements CompanyDAO {
 	}
 
 	@Override
+	public Company getCompanybyPW(String password) throws Exception {
+		Company company = new Company();
+		try {
+			conn = ConnPool.getInstance().getConnection();
+		} catch (Exception e) {
+			throw new Exception("The Connection is faild");
+		}
+
+		PreparedStatement pstms = null;
+		try {
+
+			String sql1 = "SELECT * FROM COMPANY WHERE PASSWORD= ?"; // Fetch from DB according to PW
+
+			pstms = conn.prepareStatement(sql1);
+			pstms.setString(1, company.getPassword());
+			ResultSet resultSet = pstms.executeQuery();
+
+			resultSet.next();
+
+			company.setId(resultSet.getLong(1));
+
+			company.setCompName(resultSet.getString(2));
+
+			company.setPassword(resultSet.getString(3));
+
+			company.setEmail(resultSet.getString(4));
+
+			// System.out.println("Result is " + resultSet.getLong(1) +
+			// resultSet.getString(2) + resultSet.getString(3)
+			// + resultSet.getString(4));
+			// System.out.println("Result is " + company);
+
+			// TODO - Add the coupons list from the ArrayCollection
+
+		} catch (SQLException e1) {
+
+			throw new Exception("get company failed with Password=" + password);
+
+		} finally {
+
+			// finally block used to close resources
+
+			try {
+
+				if (pstms != null) {
+					ConnPool.getInstance().returnConnection(conn);
+				}
+
+			} catch (Exception e1) {
+
+				throw new Exception("The close connection action faild");
+
+			}
+
+			try {
+
+				if (conn != null) {
+					ConnPool.getInstance().returnConnection(conn);
+				}
+
+			} catch (Exception e2) {
+
+				throw new Exception("The close connection action faild");
+
+			}
+		}
+		return company;
+
+	}
+
+	@Override
 
 	public Company getCompany(long id) throws Exception {
 
