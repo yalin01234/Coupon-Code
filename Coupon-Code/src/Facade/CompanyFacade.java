@@ -28,17 +28,17 @@ public class CompanyFacade implements CouponClientFacade {
 	/**************************************
 	 * Attributes
 	 *****************************************/
-	private Company company = new Company();
+	private Company company = new Company(); // Initiation of the Company class
 	private Connection conn;
 	private long ID_comp;
 	private String compName = null;
 	private String pass = null;
-	private CouponDBDAO couponDBDAO = new CouponDBDAO();
-	private CompanyDBDAO companyDBDAO = new CompanyDBDAO();
+	private CouponDBDAO couponDBDAO = new CouponDBDAO(); // Initiation of the Coupon DBDAO class
+	private CompanyDBDAO companyDBDAO = new CompanyDBDAO(); // Initiation of the Company DBDAO class
 
 	/***************************************
-	 * CTRO
-	 *********************************************/
+	 * CTRO Partial Constructor
+	 ***************************************/
 	public CompanyFacade() {
 		// TODO Auto-generated constructor stub
 	}
@@ -53,6 +53,7 @@ public class CompanyFacade implements CouponClientFacade {
 		// TODO Auto-generated method stub
 		this.compName = name;
 		this.pass = password;
+
 		// Create instance locally of company
 		company = getCompany(compName);
 		// Authentication of the password and company name
