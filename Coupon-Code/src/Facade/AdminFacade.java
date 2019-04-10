@@ -34,6 +34,7 @@ public class AdminFacade implements CouponClientFacade {
 	 * CTRO
 	 *********************************************/
 	public AdminFacade() {
+
 		// TODO Auto-generated constructor stub
 	}
 

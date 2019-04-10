@@ -15,7 +15,8 @@ import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.Main.CouponSystem.clientType;
 
-public class CompanyFacade implements CouponClientFacade {
+public class CompanyFacade implements CouponClientFacade { // implement the CouponClientFacade Interface for the Login
+															// Purpose.
 
 	/**
 	 * This class implements the client level of the system. The user login to the
@@ -40,7 +41,7 @@ public class CompanyFacade implements CouponClientFacade {
 	 * CTRO Partial Constructor
 	 ***************************************/
 	public CompanyFacade() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**************************************
@@ -50,7 +51,7 @@ public class CompanyFacade implements CouponClientFacade {
 	 *******************************************/
 	@Override
 	public Boolean login(String name, String password, clientType cType) throws Exception {
-		// TODO Auto-generated method stub
+
 		this.compName = name;
 		this.pass = password;
 
