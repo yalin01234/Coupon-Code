@@ -5,6 +5,7 @@ import DBDAO.CouponDBDAO;
 import DBDAO.CustomerDBDAO;
 import Facade.AdminFacade;
 import Facade.CompanyFacade;
+import Facade.CustomerFacade;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
@@ -86,6 +87,26 @@ public class Test {
 			// adminFacade2.createCompany(company3);
 			adminFacade2.getAllCompanies();
 			adminFacade2.getAllCustomers();
+
+			/********* Company **************/
+			CompanyFacade companyfacade = new CompanyFacade();
+			companyfacade.login("mPresnt", "12345", clientType.Company);
+			// companyfacade = (CompanyFacade)
+			// CouponSystem.getCouponSystem().login("mPrest", "12345", clientType.Company);
+			if (companyfacade != null) {
+				companyfacade.createCoupon(coupon1);
+				companyfacade.getCouponsByExpiredDate(Utils.getDate());
+
+			}
+
+			/********* Customer **************/
+
+			CustomerFacade CustomerFacade = new CustomerFacade();
+			CustomerFacade = (CustomerFacade) CouponSystem.getCouponSystem().login("Evi", "12345", clientType.Customer);
+			if (companyfacade != null) {
+				CustomerFacade.purchaseCoupon(coupon1);
+			}
+
 			// adminFacade2.getCompanybyPW("55662322");
 
 		}
