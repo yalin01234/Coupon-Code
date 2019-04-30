@@ -238,7 +238,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		Set<Coupon> coupons2 = new HashSet<Coupon>();
 		Set<Coupon> coupons = new HashSet<Coupon>();
 		coupons = getCompanyCoupons(company);
-		Iterator<Coupon> itr = coupons.iterator();
+		Iterator<Coupon> itr = coupons.iterator();// using with Iterator to fetch the data from the DB.
 
 		while (itr.hasNext()) {
 			Coupon coupon2 = new Coupon();
