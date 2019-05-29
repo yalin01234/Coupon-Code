@@ -1,9 +1,9 @@
 package Java.Main;
 
 import DB.Database;
-import Facade.AdminFacade;
-import Java.JavaBean.Company;
-import Java.JavaBean.Customer;
+import Facade.CompanyFacade;
+import Java.JavaBean.Coupon;
+import Java.JavaBean.CouponType;
 import Java.Main.CouponSystem.clientType;
 
 public class Test {
@@ -23,8 +23,8 @@ public class Test {
 		// "Ruobem@test.com");
 
 		// Company company = new Company(2, "Shoshana", "12345", "oriel@test.com");
-		// Coupon coupon = new Coupon(4, "ConnPool", Utils.getDriverData(),
-		// Utils.endDate(20), 7000, CouponType.CAMPING, "wtf",
+		// Coupon coupon1 = new Coupon (4, "ConnPool",
+		// Utils.getDriverData(),Utils.endDate(20), 7000, CouponType.CAMPING, "wtf",
 		// 251, "image");
 
 		// Customer customer1 = new Customer(1, "Evi", "345345");
@@ -39,9 +39,13 @@ public class Test {
 		// Customer customer9 = new Customer(9, "Sarge", "546546");
 		// Customer customer10 = new Customer(10, "Jurgen", "868686");
 
-		// Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60),
-		// 1111, CouponType.HEALTH, "wtf", 1251,
-		// "image");
+		Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60), 1111, CouponType.HEALTH, "wtf", 1251,
+				"image");
+		Coupon coupon2 = new Coupon(2, "Eli", Utils.getDate(), Utils.endDate(90), 2222, CouponType.HEALTH, "wtf11",
+				1122, "imageAndShare");
+		Coupon coupon3 = new Coupon(3, "Amir", Utils.getDate(), Utils.endDate(120), 3333, CouponType.HEALTH, "wtf1122",
+				3232, "imageAndShareAndLove");
+
 		// Coupon coupon2 = new Coupon(2, "Oren", Utils.getDate(), Utils.endDate(60),
 		// 2222, CouponType.HEALTH, "abc", 3356,
 		// "image");
@@ -62,9 +66,9 @@ public class Test {
 		// Utils.endDate(60), 123123123, CouponType.HEALTH,
 		// "13131313", 852852, "image");
 
-		Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
-		Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
-		Company company3 = new Company(3, "UTREEEE", "55662322", "Utr@test.com");
+		// Company company1 = new Company(1, "mPrest", "12345", "oriel@test.com");
+		// Company company2 = new Company(2, "Checkpoint", "12345", "Moshe@test.com");
+		// Company company3 = new Company(3, "UTREEEE", "55662322", "Utr@test.com");
 
 		// Coupon coupon1 = new Coupon(1, "Omer", Utils.getDate(), Utils.endDate(60),
 		// 1111, CouponType.HEALTH, "wtf", 1251,
@@ -73,32 +77,37 @@ public class Test {
 		// 2222, CouponType.HEALTH, "abc", 3356,
 		// "image");
 
-		Customer customer1 = new Customer(1, "Evi", "898989");
-		Customer customer2 = new Customer(2, "Shay", "567567");
+		// Customer customer1 = new Customer(1, "Evi", "898989");
+		// Customer customer2 = new Customer(2, "Shay", "567567");
 
 		// AdminFacade adminFacade = new AdminFacade();
 
 		// CustomerDBDAO customerDBDAO = new CustomerDBDAO();
 
 		/********* Admin **************/
-		AdminFacade adminFacade2 = new AdminFacade();
-		adminFacade2 = (AdminFacade) CouponSystem.getCouponSystem().login("admin", "12346", clientType.Admin);
-		if (adminFacade2 != null) {
-			// adminFacade2.createCompany(company1);
-			// adminFacade2.createCompany(company2);
-			// adminFacade2.createCompany(company3);
-			// adminFacade2.createCustomer(customer1);
-			// adminFacade2.createCustomer(customer1);
-			// adminFacade2.getAllCompanies();
-			// adminFacade2.getAllCustomers();
+		// AdminFacade adminFacade2 = new AdminFacade();
+		// adminFacade2 = (AdminFacade) CouponSystem.getCouponSystem().login("admin",
+		// "12346", clientType.Admin);
+		// if (adminFacade2 != null) {
 
-			/********* Company **************/
-			// CompanyFacade companyfacade = new CompanyFacade();
-			// companyfacade.login("mPresnt", "12345", clientType.Company);
-			// companyfacade = (CompanyFacade)
-			// CouponSystem.getCouponSystem().login("mPrest", "12345", clientType.Company);
-			// if (companyfacade != null) {
-			// companyfacade.createCoupon(coupon1);
+		// adminFacade2.createCompany(company1);
+		// adminFacade2.createCompany(company2);
+		// adminFacade2.createCompany(company3);
+		// adminFacade2.createCustomer(customer1);
+		// adminFacade2.createCustomer(customer1);
+		// adminFacade2.getAllCompanies();
+		// adminFacade2.getAllCustomers();
+
+		/********* Company **************/
+		CompanyFacade companyfacade = new CompanyFacade();
+		companyfacade.login("Checkpoint", "12345", clientType.Company);
+		companyfacade = (CompanyFacade) CouponSystem.getCouponSystem().login("Checkpoint", "12345", clientType.Company);
+		// System.out.println(companyfacade);
+
+		if (companyfacade != null) {
+			companyfacade.createCoupon(coupon1);
+			companyfacade.createCoupon(coupon2);
+			companyfacade.createCoupon(coupon3);
 			// companyfacade.getCouponsByExpiredDate(Utils.getDate());
 
 			// }
@@ -106,9 +115,9 @@ public class Test {
 			/********* Customer **************/
 
 			// CustomerFacade CustomerFacade = new CustomerFacade();
-			// CustomerFacade = (CustomerFacade) CouponSystem.getCouponSystem().login("Evi",
-			// "12345", clientType.Customer);
-			// if (companyfacade != null) {
+			// CustomerFacade = (CustomerFacade)
+			// CouponSystem.getCouponSystem().login("Evi","12345", clientType.Customer);
+			// if (CustomerFacade != null) {
 			// CustomerFacade.purchaseCoupon(coupon1);
 			// }
 
