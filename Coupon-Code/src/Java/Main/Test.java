@@ -105,9 +105,11 @@ public class Test {
 		// System.out.println(companyfacade);
 
 		if (companyfacade != null) {
-			companyfacade.createCoupon(coupon1);
-			companyfacade.createCoupon(coupon2);
-			companyfacade.createCoupon(coupon3);
+			// companyfacade.createCoupon(coupon1);
+			// companyfacade.createCoupon(coupon2);
+			// companyfacade.createCoupon(coupon3);
+			// companyfacade.getAllCoupons();
+			companyfacade.getCompany("Checkpoint");
 			// companyfacade.getCouponsByExpiredDate(Utils.getDate());
 
 			// }

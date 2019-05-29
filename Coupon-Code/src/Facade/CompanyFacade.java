@@ -56,13 +56,14 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		String pass = password;
 		// System.out.println(compName);
 		// Create instance locally of company
-		company = getCompany(compName); //
-		System.out.println(company);
+		company = getCompany(compName); // Getting the Compnay Object per the Company Name the user has inserted
+		// System.out.println(company);
 
 		// Authentication of the password and company name
 
-		if (company.getCompName().equals(this.compName) && company.getPassword().equals(this.pass) && company != null) {
-			return true;
+		if (company.getCompName().equals(compName) && company.getPassword().equals(pass) && company != null) {
+			return true;// Comparing the company object after fetching from the DB if is equal the User
+						// name and PW that user has inserted .
 		} else {
 			return false;
 		}
@@ -127,7 +128,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		Company companyLocaly = new Company(); // Initiation of the Company object
 		Set<Company> allCompanies = new HashSet<Company>(); // Initiation SET collection if HashSET
 		allCompanies = companyDBDAO.getAllCompanies(); // Invoke the getAllCompanies method from Company DBDAO.
-		System.out.println(allCompanies);
+		// System.out.println(allCompanies);
 
 		Iterator<Company> itr = allCompanies.iterator(); // Initiation Iterator to verify
 
