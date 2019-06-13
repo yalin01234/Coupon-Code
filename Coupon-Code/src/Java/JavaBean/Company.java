@@ -18,7 +18,8 @@ public class Company {
 
 	/**
 	 * @param no
-	 * 			@param - an empty Constructor
+	 * @param -
+	 *            an empty Constructor
 	 */
 
 	public Company() {
@@ -41,7 +42,7 @@ public class Company {
 		this.password = password;
 		this.email = email;
 
-	}
+	} // Full contractor
 
 	public long getId() {
 		return id;

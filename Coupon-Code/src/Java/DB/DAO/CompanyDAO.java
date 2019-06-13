@@ -4,10 +4,6 @@ import java.util.Set;
 
 import Java.JavaBean.Company;
 
-/**
- * @Author -
- */
-
 public interface CompanyDAO {
 
 	void createCompany(Company company) throws Exception;
