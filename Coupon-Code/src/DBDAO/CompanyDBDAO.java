@@ -137,7 +137,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		PreparedStatement pstmt = null;
 
-		System.out.println(companyLocal);
+		// System.out.println(companyLocal);
 
 		try {
 

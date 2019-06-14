@@ -885,11 +885,11 @@ public class CouponDBDAO implements CouponDAO {
 			}
 			// constructor the object, retrieve the attributes from the results
 			pstmt2 = conn.prepareStatement(sql2);
-			System.out.println("testpstmt299");
+			// System.out.println("testpstmt299");
 			pstmt2.setLong(1, comp_id);
 			pstmt2.setLong(2, idPK);
 			pstmt2.executeUpdate();
-			System.out.println("testpstmt2101");
+			// System.out.println("testpstmt2101");
 		} catch (SQLException e) {
 			// Handle errors for JDBC
 			throw new Exception("Coupon creation failed");

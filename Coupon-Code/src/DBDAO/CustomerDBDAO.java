@@ -1041,7 +1041,7 @@ public class CustomerDBDAO implements CustomerDAO {
 	}
 
 	public void purchaseCoupon(Coupon coupon, Customer customer) throws Exception {
-
+		// System.out.println(customer);
 		long idPK = 0;
 
 		// Open a connection from the connection pool class
@@ -1058,7 +1058,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		String sql1 = "SELECT * FROM COUPON";
 
-		String sql2 = " INSERT INTO CUSTOMER_COUPON(CUST_ID,COUPON_ID) VALUES(?,?)";
+		String sql2 = "INSERT INTO CUSTOMER_COUPON(CUST_ID,COUPON_ID) VALUES(?,?)";
 
 		// Set the results from the database
 
@@ -1080,7 +1080,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 					// System.out.println(resultSet.getLong(1));
 					idPK = resultSet.getLong(1);
-					// System.out.println(idPK);
+					System.out.println(idPK);
 
 				}
 
@@ -1088,9 +1088,10 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			// constructor the object, retrieve the attributes from the results
 			// System.out.println(idPK);
+			System.out.println(customer.getId());
 			pstmt = conn.prepareStatement(sql2);
-			pstmt.setLong(1, 1);
-			// pstmt.setLong(1,customer.getId());
+			// pstmt.setLong(1, 1);
+			pstmt.setLong(1, customer.getId());
 
 			pstmt.setLong(2, idPK);
 			pstmt.executeUpdate();
@@ -1099,7 +1100,9 @@ public class CustomerDBDAO implements CustomerDAO {
 		} catch (SQLException e) {
 
 			// Handle errors for JDBC
-
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+			System.out.println(e.getStackTrace());
 			throw new Exception("Purchased Coupon failed");
 
 		} finally {

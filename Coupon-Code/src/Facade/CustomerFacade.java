@@ -52,6 +52,8 @@ public class CustomerFacade implements CouponClientFacade {
 		this.pass = password;
 		this.clientType = cType;
 		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
+		// System.out.println("yalinarie111 " + customerLocaly);
+
 		// Authentication of the password and company name
 		if (customerLocaly.getCustomerName().equals(this.CUST_NAME) && customerLocaly.getPassword().equals(this.pass)
 				&& customerLocaly != null) {
@@ -61,17 +63,21 @@ public class CustomerFacade implements CouponClientFacade {
 		}
 	}
 
-	public void purchaseCoupon(Coupon coupon) throws Exception {
+	public void purchaseCoupon(Coupon coupon, String name) throws Exception {
+		this.CUST_NAME = name;
+		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
+		System.out.println("yalinarie111 " + customerLocaly);
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
+		// System.out.println("yalinarie111 " + customerLocaly);
 		Iterator<Coupon> itr = allCoupons.iterator();
 
 		while (itr.hasNext()) {
 			Coupon coupon2 = new Coupon();
 			coupon2 = itr.next();
-			System.out.println(coupon);
-			System.out.println(coupon2);
+			// System.out.println(coupon);
+			// System.out.println(coupon2);
 			if (coupon2.getTitle().equals(coupon.getTitle())) {
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 				JOptionPane.showMessageDialog(frame, "The Coupon " + coupon.getTitle() + " is already exist");
@@ -79,7 +85,7 @@ public class CustomerFacade implements CouponClientFacade {
 			}
 
 		}
-
+		// System.out.println(coupon);
 		customerDBDAO.purchaseCoupon(coupon, customerLocaly);
 
 	}
