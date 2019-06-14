@@ -532,9 +532,9 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			// Set the results from the database,
 
-			ResultSet resultSet = pstms.executeQuery(sql); // Fetch all Coupon
+			ResultSet resultSet = pstms.executeQuery(); // Fetch all Coupon
 
-			ResultSet resultSet2 = pstms1.executeQuery(sql1);
+			ResultSet resultSet2 = pstms1.executeQuery();
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -1078,21 +1078,23 @@ public class CustomerDBDAO implements CustomerDAO {
 
 				if (coupon.getTitle().equals(resultSet.getString(2))) {
 
+					// System.out.println(resultSet.getLong(1));
 					idPK = resultSet.getLong(1);
+					// System.out.println(idPK);
 
 				}
 
 			}
 
 			// constructor the object, retrieve the attributes from the results
-
+			// System.out.println(idPK);
 			pstmt = conn.prepareStatement(sql2);
-
-			pstmt.setLong(1, customer.getId());
+			pstmt.setLong(1, 1);
+			// pstmt.setLong(1,customer.getId());
 
 			pstmt.setLong(2, idPK);
-
 			pstmt.executeUpdate();
+			// System.out.println("idpk" + idPK);
 
 		} catch (SQLException e) {
 

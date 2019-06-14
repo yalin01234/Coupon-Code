@@ -46,6 +46,7 @@ public class CustomerFacade implements CouponClientFacade {
 	/*************************************
 	 * Methods
 	 ********************************************/
+	@Override
 	public Boolean login(String name, String password, clientType cType) throws Exception {
 		this.CUST_NAME = name;
 		this.pass = password;
