@@ -1080,7 +1080,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 					// System.out.println(resultSet.getLong(1));
 					idPK = resultSet.getLong(1);
-					System.out.println(idPK);
+					// System.out.println(idPK);
 
 				}
 
@@ -1088,7 +1088,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			// constructor the object, retrieve the attributes from the results
 			// System.out.println(idPK);
-			System.out.println(customer.getId());
+			// System.out.println(customer.getId());
 			pstmt = conn.prepareStatement(sql2);
 			// pstmt.setLong(1, 1);
 			pstmt.setLong(1, customer.getId());

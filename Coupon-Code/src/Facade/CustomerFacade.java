@@ -45,9 +45,11 @@ public class CustomerFacade implements CouponClientFacade {
 
 	/*************************************
 	 * Methods
+	 * 
+	 * @return
 	 ********************************************/
-	@Override
-	public Boolean login(String name, String password, clientType cType) throws Exception {
+
+	public boolean Boolean(String name, String password, clientType cType) throws Exception {
 		this.CUST_NAME = name;
 		this.pass = password;
 		this.clientType = cType;
@@ -61,12 +63,13 @@ public class CustomerFacade implements CouponClientFacade {
 		} else {
 			return false;
 		}
+
 	}
 
-	public void purchaseCoupon(Coupon coupon, String name) throws Exception {
-		this.CUST_NAME = name;
+	public void purchaseCoupon(Coupon coupon) throws Exception {
+		// this.CUST_NAME = name;
 		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
-		System.out.println("yalinarie111 " + customerLocaly);
+		// System.out.println("yalinarie111 " + customerLocaly);
 
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
@@ -107,7 +110,7 @@ public class CustomerFacade implements CouponClientFacade {
 	}
 
 	public Set<Coupon> getAllPurchasedCouponsByType(CouponType cType) throws Exception {
-
+		// System.out.println(customerLocaly);
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
 		Set<Coupon> allCouponsByType = new HashSet<Coupon>();
@@ -171,6 +174,12 @@ public class CustomerFacade implements CouponClientFacade {
 					"To Customer," + customerLocaly.getCustomerName() + " hasn't coupons ");
 			return null;
 		}
+	}
+
+	@Override
+	public Boolean login(String name, String password, Java.Main.CouponSystem.clientType cType) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

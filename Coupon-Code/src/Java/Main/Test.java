@@ -40,6 +40,9 @@ public class Test {
 				1122, "imageAndShare");
 		Coupon coupon3 = new Coupon(3, "Amir", Utils.getDate(), Utils.endDate(120), 3333, CouponType.HEALTH, "wtf1122",
 				3232, "imageAndShareAndLove");
+		Coupon coupon4 = new Coupon(4, "Yuval", Utils.getDate(), Utils.endDate(12), 1232, CouponType.HEALTH, "wtf7878",
+				7788, "imageAndShareAndLove");
+
 		/****************************************************************************************************/
 
 		/********* Admin **************/
@@ -83,14 +86,12 @@ public class Test {
 		/********* Customer **************/
 
 		CustomerFacade CustomerFacade = new CustomerFacade();
-
+		// CustomerFacade.login("Evi", "345345", clientType.Customer)
 		CouponSystem.getCouponSystem().login("Evi", "345345", clientType.Customer);
 		if (CustomerFacade != null) {
 
-			// CustomerFacade.purchaseCoupon(coupon1);
-			// CustomerFacade.purchaseCoupon(coupon2);
-			System.out.println(coupon3);
-			CustomerFacade.purchaseCoupon(coupon3, "Evi");
+			// System.out.println(coupon3);
+			CustomerFacade.purchaseCoupon(coupon4);
 
 		}
 
