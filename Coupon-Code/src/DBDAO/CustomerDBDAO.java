@@ -1,5 +1,8 @@
 package DBDAO;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -526,15 +529,11 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			// build The SQL query
 
-			// String sql = "SELECT * FROM COUPON";
-
-			// String sql1 = "SELECT * FROM CUSTOMER_COUPON";
-
 			// Set the results from the database,
 
 			ResultSet resultSet = pstms.executeQuery(); // Fetch all Coupon
 
-			ResultSet resultSet2 = pstms1.executeQuery();
+			ResultSet resultSet2 = pstms1.executeQuery();// Fetch all Customer_Coupon
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -553,7 +552,8 @@ public class CustomerDBDAO implements CustomerDAO {
 
 				if (couponIDs.contains(resultSet.getLong(1))) {
 
-					Coupon coupon = new Coupon();
+					Coupon coupon = new Coupon(); // We have to set-up a new Coupon object in order to import the values
+													// from DB.
 
 					coupon.setId(resultSet.getLong(1));
 
@@ -778,6 +778,30 @@ public class CustomerDBDAO implements CustomerDAO {
 
 				customers.add(customer);
 				System.out.println(customers);
+				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\testFile1.txt";
+				// String createDirectoriesPath = "C:\\\\temp\\\\a\\\\b";
+				new File("C:\\Directory2\\Sub2\\Sub-Sub2").mkdirs();
+				File file = new File(PathFile);
+
+				// Create the file
+				if (file.createNewFile()) {
+					System.out.println("File is created!");
+				} else {
+					System.out.println("File already exists.");
+				}
+
+				// CreateDirectoies createDirectoies = new
+				// CreateDirectoies(createDirectoriesPath, true);
+				// createDirectoies(createDirectoriesPath, true);
+
+				FileWriter fileWriter = new FileWriter(PathFile, true);
+				fileWriter.write(customer.getCustomerName());
+				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write(customer.getCustomerName());
+				bufferedWriter.newLine();
+				bufferedWriter.flush();
+				bufferedWriter.close();
+				System.out.println("Successfully Copied Customer...");
 			}
 
 		} catch (SQLException e) {
@@ -1100,9 +1124,9 @@ public class CustomerDBDAO implements CustomerDAO {
 		} catch (SQLException e) {
 
 			// Handle errors for JDBC
-			System.out.println(e.getMessage());
-			System.out.println(e.getCause());
-			System.out.println(e.getStackTrace());
+			// System.out.println(e.getMessage());
+			// System.out.println(e.getCause());
+			// System.out.println(e.getStackTrace());
 			throw new Exception("Purchased Coupon failed");
 
 		} finally {

@@ -29,6 +29,8 @@ public class AdminFacade implements CouponClientFacade {
 	private CustomerDBDAO custDAO = new CustomerDBDAO();
 	private final String name = "admin";
 	private final String pass = "12346";
+	// private String PathFile;
+	// private String createDirectoriesPath;
 
 	/****************************************
 	 * CTRO
@@ -160,6 +162,7 @@ public class AdminFacade implements CouponClientFacade {
 	public Set<Customer> getAllCustomers() throws Exception {
 
 		return custDAO.getAllCustomer();
+
 	}
 
 }

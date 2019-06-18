@@ -43,6 +43,14 @@ public class CustomerFacade implements CouponClientFacade {
 
 	}
 
+	// public String getCUST_NAME() {
+	// return CUST_NAME;
+	// }
+
+	// public void setCUST_NAME(String cUST_NAME) {
+	// this.CUST_NAME = cUST_NAME;
+	// }
+
 	/*************************************
 	 * Methods
 	 * 
@@ -66,8 +74,8 @@ public class CustomerFacade implements CouponClientFacade {
 
 	}
 
-	public void purchaseCoupon(Coupon coupon) throws Exception {
-		// this.CUST_NAME = name;
+	public void purchaseCoupon(Coupon coupon, String name) throws Exception {
+		this.CUST_NAME = name;
 		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
 		// System.out.println("yalinarie111 " + customerLocaly);
 
@@ -93,8 +101,9 @@ public class CustomerFacade implements CouponClientFacade {
 
 	}
 
-	public Set<Coupon> getAllPurchasedCoupons() throws Exception {
-
+	public Set<Coupon> getAllPurchasedCoupons(String name) throws Exception {
+		this.CUST_NAME = name;
+		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
 
@@ -109,8 +118,11 @@ public class CustomerFacade implements CouponClientFacade {
 
 	}
 
-	public Set<Coupon> getAllPurchasedCouponsByType(CouponType cType) throws Exception {
+	public Set<Coupon> getAllPurchasedCouponsByType(String name, CouponType cType) throws Exception {
 		// System.out.println(customerLocaly);
+		this.CUST_NAME = name;
+		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
+
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
 		Set<Coupon> allCouponsByType = new HashSet<Coupon>();
@@ -142,8 +154,10 @@ public class CustomerFacade implements CouponClientFacade {
 		}
 	}
 
-	public Set<Coupon> getAllPurchasedCouponsByPrice(double price) throws Exception {
-		// Get all customer coupons
+	public Set<Coupon> getAllPurchasedCouponsByPrice(String name, double price) throws Exception {
+		this.CUST_NAME = name;
+		this.customerLocaly = customerDBDAO.getCustomer(CUST_NAME);
+
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 		allCoupons = customerDBDAO.getCustomerCoupons(customerLocaly);
 		Set<Coupon> allPurchasedCouponsByType = new HashSet<Coupon>();
