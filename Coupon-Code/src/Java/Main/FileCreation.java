@@ -27,9 +27,6 @@ public class FileCreation { // SingleTone to create file
 	public static void createFile() throws Exception {
 		new File("C:\\Directory2\\Sub2\\Sub-Sub2").mkdirs();
 		File file = new File("C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\DBBackup.txt");
-		File file1 = new File("C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\Logs.txt");
-		// System.out.println(PathFile);
-		System.out.println("testyayayayayay");
 
 		file.createNewFile();
 		// Create the file
@@ -42,33 +39,7 @@ public class FileCreation { // SingleTone to create file
 			System.out.println("File already exists.");
 
 		}
-		file1.createNewFile();
-		// Create the file
-		if (file.createNewFile()) {
-
-			System.out.println("File is created!");
-
-		} else {
-
-			System.out.println("File already exists.");
-
-		}
-
-		// FileWriter fileWriter = new FileWriter(PathFile, true);
-
-		// fileWriter.write("YalinArie Test 43");
-
-		// BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-		// bufferedWriter.write("YalinArie Test 43");
-
-		// bufferedWriter.newLine();
-
-		// bufferedWriter.flush();
-
-		// bufferedWriter.close();
-
-		// System.out.println("Successfully Copied Customer...");
 
 	}
+
 }

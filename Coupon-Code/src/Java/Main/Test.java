@@ -1,7 +1,10 @@
 package Java.Main;
 
+import java.util.logging.Level;
+
 import DB.Database;
 import Facade.AdminFacade;
+import Facade.CompanyFacade;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
@@ -16,8 +19,8 @@ public class Test {
 
 		Database.getDatabase();
 
-		// FileCreation.getFileCreaiton();
 		FileCreation.createFile();
+		MyLogger.logToFile(Level.WARNING, " Welcome to LogFile  ");
 
 		Company company1 = new Company(1, "Miccccc", "121212", "Avi@gmail.com");
 		Company company2 = new Company(2, "Amdocs", "343434", "Moshe@gmail.com");
@@ -48,149 +51,68 @@ public class Test {
 			adminFacade2.getAllCustomers();
 			adminFacade2.getAllCompanies();
 
-			// adminFacade2.createCompany(company2);
-			// adminFacade2.createCompany(company3);
-			// adminFacade2.createCompany(company4);
-
-			// adminFacade2.createCustomer(customer1);
-			// adminFacade2.createCustomer(customer2);
-			// adminFacade2.createCustomer(customer3);
-			// adminFacade2.createCustomer(customer4);
-
-			// adminFacade2.createCustomer(customer1);
-			// adminFacade2.getAllCompanies();
-			// adminFacade2.getAllCustomers();
-
-			/********* Company **************/
-			// CompanyFacade companyfacade = new CompanyFacade();
-			// companyfacade.login("Miccccc", "121212", clientType.Company);
-			// companyfacade = (CompanyFacade)
-			// CouponSystem.getCouponSystem().login("Miccccc", "121212",
-			// clientType.Company);
-			// System.out.println(companyfacade);
-
-			// if (companyfacade != null) {
-
-			// companyfacade.createCoupon(coupon1);
-			// companyfacade.createCoupon(coupon2);
-			// companyfacade.createCoupon(coupon3);
-			// companyfacade.createCoupon(coupon4);
-
-			// }
-			// companyfacade.getAllCoupons();
-			// companyfacade.getCompany("Checkpoint");
-			// companyfacade.getCouponsByExpiredDate(Utils.getDate());
-
-			// }
-
-			/********* Customer **************/
-
-			// CustomerFacade CustomerFacade = new CustomerFacade();
-			// CustomerFacade.login("Evi", "345345", clientType.Customer);
-			// CouponSystem.getCouponSystem().login("Shay", "567567", clientType.Customer);
-			// if (CustomerFacade != null) {
-			// CustomerFacade.getAllPurchasedCoupons();
-			// System.out.println(coupon3);
-
-			// CustomerFacade.purchaseCoupon(coupon4, "Evi");
-			// CustomerFacade.getAllPurchasedCoupons("Evi");
-			// CustomerFacade.getAllPurchasedCouponsByType("Evi", CouponType.HEALTH);
-			// }
-
-			/***********************************************/
-			// adminFacade2.getCompanybyPW("55662322");
-
-			// }
-
-			// customerDBDAO.purchaseCoupon(coupon1, customer1);
-			// customerDBDAO.getCustomer1("898989");
-
-			// customerDBDAO.createCustomer(customer2);
-			// customerDBDAO.getCustomer("Evi");
-			// customerDBDAO.getCoupons();
-			// customerDBDAO.getAllCustomer();
-			// customerDBDAO.getCustomerCou pons(customer1);
-			// customerDBDAO.printAllCustmers();
-
-			// customerDBDAO.updateCustomer(customer1);
-			// customerDBDAO.
-
-			// adminFacade.createCompany(company1);
-			// adminFacade.createCompany(company2);
-
-			// adminFacade.removeCompany(company2);
-			// adminFacade.removeCompany(company1);
-			// adminFacade.getAllCompanies();
-			// adminFacade.updateCustomer(customer1);
-			// adminFacade.createCustomer(customer2);
-
-			// adminFacade.updateCustomer(customer1);
-
-			// CompanyFacade companyFacade = new CompanyFacade();
-			// CouponDBDAO couponDBDAO = new CouponDBDAO();
-
-			// couponDBDAO.createCoupon(coupon1, 1);
-			// couponDBDAO.createCoupon(coupon2, 2);
-
-			// adminFacade.removeCompany(company2);
-			// couponDBDAO.removeCoupon(coupon1);
-			// couponDBDAO.removeCustomerCoupon(coupon2);
-
-			// couponDBDAO.createCoupon(coupon1, 1);
-			// couponDBDAO.createCoupon(coupon2, 2);
-
-			// companyFacade.createCoupon(coupon1);
-			// companyFacade.createCoupon(coupon2);
-
-			// adminFacade.createCompany(company1);
-			// adminFacade.createCompany(company2);
-
-			// Company company3 = new Company(3, "Checkmarx", "121212", "Uria@test.com");
-			// Company company4 = new Company(4, "Greenlight", "445566", "Leon@test.com");
-			// Company company5 = new Company(5, "Kobicom", "889944", "Meital@test.com");
-			// Company company6 = new Company(6, "Amdocs", "525252", "Jurgen@test.com");
-			// Company company7 = new Company(7, "Giga", "665588", "Serge@test.com");
-			// Company company8 = new Company(8, "Huhuea", "889955", "Emual@test.com");
-			// Company company9 = new Company(9, "Moshecom", "585858", "David@test.com");
-			// Company company10 = new Company(10, "Yyuvalcom", "4454545",
-			// "Ramon@test.com");
-
-			// Company company11 = new Company(11, "Nanalcom", "55669988", "Oren@test.com");
-			// Company company12 = new Company(12, "Walla", "3344556677",
-			// "Ruobem@test.com");
-
-			// CompanyDBDAO companyDBDAO = new CompanyDBDAO();
-
-			// companyDBDAO.createCompany(company11);
-
-			// CustomerDBDAO customerDBDAO = new CustomerDBDAO();
-			// customerDBDAO.createCustomer(customer1);
-			// customerDBDAO.createCustomer(customer2);
-			// customerDBDAO.createCustomer(customer3);
-			// customerDBDAO.createCustomer(customer4);
-			// customerDBDAO.createCustomer(customer5);
-			// customerDBDAO.createCustomer(customer6);
-			// customerDBDAO.createCustomer(customer7);
-			// customerDBDAO.createCustomer(customer8);
-			// customerDBDAO.createCustomer(customer9);
-			// customerDBDAO.createCustomer(customer10);
-
-			// CouponDBDAO couponDBDAO = new CouponDBDAO();
-			// couponDBDAO.createCoupon(coupon8, 1);
-
-			// couponDBDAO.createCoupon(coupon1);
-			// couponDBDAO.createCoupon(coupon2);
-			// couponDBDAO.createCoupon(coupon3);
-			// couponDBDAO.createCoupon(coupon4);
-			// couponDBDAO.createCoupon(coupon5);
-
-			// customerDBDAO.getCustomer(1);
-			// customerDBDAO.printAllCustmers();
-
-			// customerDBDAO.createCustomer(customer1);
-			// customerDBDAO.removeCustomer(customer1);
-			// customerDBDAO.removeCustomer(customer2);
-			// customerDBDAO.removeCustomer(customer3);
 		}
+
+		// adminFacade2.createCompany(company2);
+		// adminFacade2.createCompany(company3);
+		// adminFacade2.createCompany(company4);
+
+		// adminFacade2.createCustomer(customer1);
+		// adminFacade2.createCustomer(customer2);
+		// adminFacade2.createCustomer(customer3);
+		// adminFacade2.createCustomer(customer4);
+
+		// adminFacade2.createCustomer(customer1);
+		// adminFacade2.getAllCompanies();
+		// adminFacade2.getAllCustomers();
+
+		/********* Company **************/
+		CompanyFacade companyfacade = new CompanyFacade();
+		companyfacade.login("Miccccc", "121212", clientType.Company);
+		companyfacade = (CompanyFacade) CouponSystem.getCouponSystem().login("Miccccc", "121212", clientType.Company);
+		System.out.println(companyfacade);
+
+		if (companyfacade != null) {
+
+			companyfacade.getAllCoupons();
+
+		}
+
+		// companyfacade.createCoupon(coupon2);
+		// companyfacade.createCoupon(coupon3);
+		// companyfacade.createCoupon(coupon4);
+
+		// }
+		// companyfacade.getAllCoupons();
+		// companyfacade.getCompany("Checkpoint");
+		// companyfacade.getCouponsByExpiredDate(Utils.getDate());
+
+		// }
+
+		/********* Customer **************/
+
+		// CustomerFacade CustomerFacade = new CustomerFacade();
+		// CustomerFacade.login("Evi", "345345", clientType.Customer);
+		// CouponSystem.getCouponSystem().login("Shay", "567567", clientType.Customer);
+		// if (CustomerFacade != null) {
+		// CustomerFacade.getAllPurchasedCoupons();
+		// System.out.println(coupon3);
+
+		// CustomerFacade.purchaseCoupon(coupon4, "Evi");
+		// CustomerFacade.getAllPurchasedCoupons("Evi");
+		// CustomerFacade.getAllPurchasedCouponsByType("Evi", CouponType.HEALTH);
+		// }
+
+		/***********************************************/
+		// adminFacade2.getCompanybyPW("55662322");
+
+		// }
+
+		// customerDBDAO.purchaseCoupon(coupon1, customer1);
+		// customerDBDAO.getCustomer1("898989");
+
+		// customerDBDAO.createCustomer(customer2);
+		// customerDBDAO.getCustomer("Evi");
+
 	}
 }

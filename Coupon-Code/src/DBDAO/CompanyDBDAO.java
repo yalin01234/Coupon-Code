@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import Java.DB.DAO.CompanyDAO;
 import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
+import Java.Main.MyLogger;
 
 public class CompanyDBDAO implements CompanyDAO {
 
@@ -82,10 +84,14 @@ public class CompanyDBDAO implements CompanyDAO {
 			pstmt.setString(3, company.getEmail());
 
 			pstmt.executeUpdate();
+			MyLogger.logToFile(Level.SEVERE, "Close DB for creation company in DB ");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
+			e.getMessage();
+
+			MyLogger.logToFile(Level.WARNING, e.getMessage());
 
 		} finally {
 
@@ -114,7 +120,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			}
 
 		}
-
+		MyLogger.logToFile(Level.SEVERE, "Creating Customer was sucsssed ");
 	}
 
 	@Override
@@ -150,6 +156,8 @@ public class CompanyDBDAO implements CompanyDAO {
 			pstmt.setLong(1, companyLocal.getId()); // Sets the designated parameter to the given Java long value
 
 			pstmt.executeUpdate();
+
+			MyLogger.logToFile(Level.SEVERE, "Remove Company Done");
 
 			conn.commit();// Commit the changes,If there is no error.
 
@@ -242,6 +250,7 @@ public class CompanyDBDAO implements CompanyDAO {
 				pstmt.setLong(1, id);
 
 				pstmt.executeUpdate();
+				MyLogger.logToFile(Level.SEVERE, "Remove Couoin Company Done");
 
 				conn.commit();
 
@@ -336,6 +345,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			pstms.setLong(3, company.getId());
 
 			pstms.executeUpdate();
+			MyLogger.logToFile(Level.SEVERE, "Update  Company Done");
 
 			System.out.println(company);
 
@@ -397,6 +407,8 @@ public class CompanyDBDAO implements CompanyDAO {
 			pstms.setString(1, company.getPassword());
 			ResultSet resultSet = pstms.executeQuery();
 
+			MyLogger.logToFile(Level.SEVERE, "Getting Company by PW Done");
+
 			resultSet.next();
 
 			company.setId(resultSet.getLong(1));
@@ -406,11 +418,6 @@ public class CompanyDBDAO implements CompanyDAO {
 			company.setPassword(resultSet.getString(3));
 
 			company.setEmail(resultSet.getString(4));
-
-			// System.out.println("Result is " + resultSet.getLong(1) +
-			// resultSet.getString(2) + resultSet.getString(3)
-			// + resultSet.getString(4));
-			// System.out.println("Result is " + company);
 
 			// TODO - Add the coupons list from the ArrayCollection
 
@@ -481,6 +488,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			// Set the results from the database
 
 			ResultSet resultSet = pstms.executeQuery();
+			MyLogger.logToFile(Level.SEVERE, "Getting  Company Done");
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -575,6 +583,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 				companies.add(company);
 				System.out.println(companies);
+				MyLogger.logToFile(Level.SEVERE, "Getting Company Done");
 
 				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\DBBackup.txt";
 				FileWriter fileWriter = new FileWriter(PathFile, true);
@@ -761,6 +770,7 @@ public class CompanyDBDAO implements CompanyDAO {
 			pstms = conn.prepareStatement(sql);
 
 			ResultSet resultSet = pstms.executeQuery();
+			MyLogger.logToFile(Level.SEVERE, "Getting Company Done");
 
 			// constructor the object, retrieve the attributes from the results
 
@@ -908,6 +918,7 @@ public class CompanyDBDAO implements CompanyDAO {
 					coupon.setImage(resultSet.getString(9));
 
 					coupons.add(coupon);
+					MyLogger.logToFile(Level.SEVERE, "Gettin g  Company Coupon Done");
 
 				}
 

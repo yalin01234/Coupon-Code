@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ import Java.DB.DAO.CustomerDAO;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.JavaBean.Customer;
+import Java.Main.MyLogger;
 
 public class CustomerDBDAO implements CustomerDAO {
 
@@ -87,6 +89,10 @@ public class CustomerDBDAO implements CustomerDAO {
 			pstmt.setString(2, customer.getPassword());
 
 			pstmt.executeUpdate();
+			// Logger logger = new Logger("Sucess to create Customer");
+			// logger.info("info msg");
+			// FileLog.doLogging();
+			MyLogger.logToFile(Level.SEVERE, "Create Customer was sucusssed ");
 
 		} catch (SQLException e) {
 
@@ -115,7 +121,7 @@ public class CustomerDBDAO implements CustomerDAO {
 					ConnPool.getInstance().returnConnection(conn);
 
 				}
-
+				MyLogger.logToFile(Level.SEVERE, "Close DB for creation customer in DB ");
 			} catch (Exception e) {
 
 				throw new Exception("The close connection action faild");
@@ -126,7 +132,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		// System.out.println("Customer " + customer.getCustomerName() + " inserted
 		// successfully");
-
+		MyLogger.logToFile(Level.SEVERE, "Close DB for creation customer in DB ");
 	}
 
 	@Override
@@ -166,6 +172,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			pstmt.setLong(1, customerLocaly.getId()); // Sets the designated parameter to the given Java long value
 
 			pstmt.executeUpdate();
+			MyLogger.logToFile(Level.SEVERE, "Remove Customer Done");
 
 			conn.commit();// Commit the changes,If there is no error.
 
@@ -265,6 +272,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				System.out.println(id);
 
 				pstmt.executeUpdate();
+				MyLogger.logToFile(Level.SEVERE, "Remove Customer Coupon Done");
 
 				conn.commit();
 
@@ -357,6 +365,7 @@ public class CustomerDBDAO implements CustomerDAO {
 			pstms.setLong(2, customerLocaly.getId());
 
 			pstms.executeUpdate();
+			MyLogger.logToFile(Level.SEVERE, "Update Customer Done");
 
 		} catch (SQLException e) {
 
@@ -443,12 +452,12 @@ public class CustomerDBDAO implements CustomerDAO {
 			customer.setPassword(resultSet.getString(3));
 
 			System.out.println("Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
-
+			MyLogger.logToFile(Level.SEVERE, "Update Customer Done");
 			// TODO - Add the coupons list from the ArrayCollection
 
 		} catch (SQLException e) {
 
-			throw new Exception("update customer failed");
+			throw new Exception("Getting customer failed");
 
 		} finally {
 
@@ -682,6 +691,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				coupons.add(coupon);
 
 				System.out.println(coupons);
+				MyLogger.logToFile(Level.SEVERE, "Getting  Coupon Done");
 
 			}
 
@@ -725,7 +735,7 @@ public class CustomerDBDAO implements CustomerDAO {
 
 	}
 
-	public Boolean login(String ccustName, String password) throws Exception {
+	public Boolean login(String custName, String password) throws Exception {
 
 		// TODO Auto-generated method stub
 
@@ -799,6 +809,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				bufferedWriter.close();
 				bufferedWriter1.close();
 				bufferedWriter2.close();
+				MyLogger.logToFile(Level.SEVERE, "Getting  All Customer Done");
 
 			}
 
@@ -1013,13 +1024,13 @@ public class CustomerDBDAO implements CustomerDAO {
 					customer.setId(resultSet.getLong(1));
 					customer.setCustomerName(resultSet.getString(2));
 					customer.setPassword(resultSet.getString(3));
-					System.out.println("test99");
+					// System.out.println("test99");
 					System.out.println(
 							"Result is " + resultSet.getLong(1) + resultSet.getString(2) + resultSet.getString(3));
 
 					break;
 				}
-
+				MyLogger.logToFile(Level.SEVERE, "Get Customer Done");
 			}
 
 		} catch (SQLException e) {
