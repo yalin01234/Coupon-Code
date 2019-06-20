@@ -1,5 +1,7 @@
 package DBDAO;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -598,6 +600,52 @@ public class CouponDBDAO implements CouponDAO {
 				coupon.setImage(resultSet.getString(9));
 
 				coupons.add(coupon);
+
+				System.out.println(coupon);
+
+				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\DBBackup.txt";
+				FileWriter fileWriter = new FileWriter(PathFile, true);
+				fileWriter.write((int) coupon.getId());
+				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write((int) coupon.getId());
+				bufferedWriter.newLine();
+
+				FileWriter fileWriter1 = new FileWriter(PathFile, true);
+				fileWriter1.write(coupon.getTitle());
+				BufferedWriter bufferedWriter1 = new BufferedWriter(fileWriter1);
+				bufferedWriter1.write(coupon.getTitle());
+				bufferedWriter1.newLine();
+
+				FileWriter fileWriter2 = new FileWriter(PathFile, true);
+				fileWriter1.write(coupon.getAmount());
+				BufferedWriter bufferedWriter2 = new BufferedWriter(fileWriter2);
+				bufferedWriter2.write(coupon.getAmount());
+				bufferedWriter2.newLine();
+
+				FileWriter fileWriter3 = new FileWriter(PathFile, true);
+				fileWriter1.write(coupon.getMessage());
+				BufferedWriter bufferedWriter3 = new BufferedWriter(fileWriter3);
+				bufferedWriter2.write(coupon.getMessage());
+				bufferedWriter2.newLine();
+
+				FileWriter fileWriter4 = new FileWriter(PathFile, true);
+				fileWriter1.write((int) coupon.getPrice());
+				BufferedWriter bufferedWriter4 = new BufferedWriter(fileWriter4);
+				bufferedWriter2.write((int) coupon.getPrice());
+				bufferedWriter2.newLine();
+
+				FileWriter fileWriter5 = new FileWriter(PathFile, true);
+				fileWriter1.write(coupon.getImage());
+				BufferedWriter bufferedWriter5 = new BufferedWriter(fileWriter5);
+				bufferedWriter2.write(coupon.getImage());
+				bufferedWriter2.newLine();
+
+				bufferedWriter.close();
+				bufferedWriter1.close();
+				bufferedWriter2.close();
+				bufferedWriter3.close();
+				bufferedWriter4.close();
+				bufferedWriter5.close();
 
 			}
 

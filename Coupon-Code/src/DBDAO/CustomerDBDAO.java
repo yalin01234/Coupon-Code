@@ -1,7 +1,6 @@
 package DBDAO;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -778,33 +777,34 @@ public class CustomerDBDAO implements CustomerDAO {
 
 				customers.add(customer);
 				System.out.println(customers);
-				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\testFile1.txt";
-				// String createDirectoriesPath = "C:\\\\temp\\\\a\\\\b";
-				new File("C:\\Directory2\\Sub2\\Sub-Sub2").mkdirs();
-				File file = new File(PathFile);
 
-				// Create the file
-				if (file.createNewFile()) {
-					System.out.println("File is created!");
-				} else {
-					System.out.println("File already exists.");
-				}
-
-				// CreateDirectoies createDirectoies = new
-				// CreateDirectoies(createDirectoriesPath, true);
-				// createDirectoies(createDirectoriesPath, true);
-
+				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\DBBackup.txt";
 				FileWriter fileWriter = new FileWriter(PathFile, true);
-				fileWriter.write(customer.getCustomerName());
+				fileWriter.write((int) customer.getId());
 				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				bufferedWriter.write(customer.getCustomerName());
+				bufferedWriter.write((int) customer.getId());
 				bufferedWriter.newLine();
-				bufferedWriter.flush();
+
+				FileWriter fileWriter1 = new FileWriter(PathFile, true);
+				fileWriter1.write(customer.getCustomerName());
+				BufferedWriter bufferedWriter1 = new BufferedWriter(fileWriter1);
+				bufferedWriter1.write(customer.getCustomerName());
+				bufferedWriter1.newLine();
+
+				FileWriter fileWriter2 = new FileWriter(PathFile, true);
+				fileWriter1.write(customer.getPassword());
+				BufferedWriter bufferedWriter2 = new BufferedWriter(fileWriter2);
+				bufferedWriter2.write(customer.getPassword());
+				bufferedWriter2.newLine();
 				bufferedWriter.close();
-				System.out.println("Successfully Copied Customer...");
+				bufferedWriter1.close();
+				bufferedWriter2.close();
+
 			}
 
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 
 			throw new Exception("Retriev all the coupons failed");
 

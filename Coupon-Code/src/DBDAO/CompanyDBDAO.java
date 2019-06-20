@@ -1,5 +1,7 @@
 package DBDAO;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -574,6 +576,35 @@ public class CompanyDBDAO implements CompanyDAO {
 				companies.add(company);
 				System.out.println(companies);
 
+				String PathFile = "C:\\\\\\\\Directory2\\\\\\\\Sub2\\\\\\\\Sub-Sub2\\\\\\\\DBBackup.txt";
+				FileWriter fileWriter = new FileWriter(PathFile, true);
+				fileWriter.write((int) company.getId());
+				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write((int) company.getId());
+				bufferedWriter.newLine();
+
+				FileWriter fileWriter1 = new FileWriter(PathFile, true);
+				fileWriter1.write(company.getCompName());
+				BufferedWriter bufferedWriter1 = new BufferedWriter(fileWriter1);
+				bufferedWriter1.write(company.getCompName());
+				bufferedWriter1.newLine();
+
+				FileWriter fileWriter2 = new FileWriter(PathFile, true);
+				fileWriter1.write(company.getPassword());
+				BufferedWriter bufferedWriter2 = new BufferedWriter(fileWriter2);
+				bufferedWriter2.write(company.getPassword());
+				bufferedWriter2.newLine();
+
+				FileWriter fileWriter3 = new FileWriter(PathFile, true);
+				fileWriter1.write(company.getEmail());
+				BufferedWriter bufferedWriter3 = new BufferedWriter(fileWriter3);
+				bufferedWriter2.write(company.getEmail());
+				bufferedWriter2.newLine();
+
+				bufferedWriter.close();
+				bufferedWriter1.close();
+				bufferedWriter2.close();
+				bufferedWriter3.close();
 			}
 
 		} catch (SQLException e) {

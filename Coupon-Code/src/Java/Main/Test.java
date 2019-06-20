@@ -16,13 +16,8 @@ public class Test {
 
 		Database.getDatabase();
 
-		// Company company12 = new Company(12, "Walla", "3344556677",
-		// "Ruobem@test.com");
-
-		// adminFacade.removeCompany(company12);
-
-		// Company company12 = new Company(12, "Walla", "3344556677",
-		// "Ruobem@test.com");
+		// FileCreation.getFileCreaiton();
+		FileCreation.createFile();
 
 		Company company1 = new Company(1, "Miccccc", "121212", "Avi@gmail.com");
 		Company company2 = new Company(2, "Amdocs", "343434", "Moshe@gmail.com");
@@ -51,6 +46,8 @@ public class Test {
 		if (adminFacade2 != null) {
 
 			adminFacade2.getAllCustomers();
+			adminFacade2.getAllCompanies();
+
 			// adminFacade2.createCompany(company2);
 			// adminFacade2.createCompany(company3);
 			// adminFacade2.createCompany(company4);
