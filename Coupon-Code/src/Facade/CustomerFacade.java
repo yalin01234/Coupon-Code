@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.JavaBean.Customer;
 import Java.Main.CouponSystem.clientType;
+import Java.Main.MyLogger;
 
 public class CustomerFacade implements CouponClientFacade {
 
@@ -43,14 +45,6 @@ public class CustomerFacade implements CouponClientFacade {
 
 	}
 
-	// public String getCUST_NAME() {
-	// return CUST_NAME;
-	// }
-
-	// public void setCUST_NAME(String cUST_NAME) {
-	// this.CUST_NAME = cUST_NAME;
-	// }
-
 	/*************************************
 	 * Methods
 	 * 
@@ -67,6 +61,7 @@ public class CustomerFacade implements CouponClientFacade {
 		// Authentication of the password and company name
 		if (customerLocaly.getCustomerName().equals(this.CUST_NAME) && customerLocaly.getPassword().equals(this.pass)
 				&& customerLocaly != null) {
+			MyLogger.logToFile(Level.SEVERE, "Login Coupon Done");
 			return true;
 		} else {
 			return false;
@@ -92,6 +87,7 @@ public class CustomerFacade implements CouponClientFacade {
 			if (coupon2.getTitle().equals(coupon.getTitle())) {
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 				JOptionPane.showMessageDialog(frame, "The Coupon " + coupon.getTitle() + " is already exist");
+				MyLogger.logToFile(Level.SEVERE, "purchaseCoupon Coupon Done");
 				return;
 			}
 
@@ -113,6 +109,7 @@ public class CustomerFacade implements CouponClientFacade {
 		} else {
 			JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 			JOptionPane.showMessageDialog(frame, "To Customer," + customerLocaly.getCustomerName() + " hasn't coupons");
+			MyLogger.logToFile(Level.SEVERE, "getAllPurchasedCoupons Coupon Done");
 			return null;
 		}
 
@@ -136,6 +133,7 @@ public class CustomerFacade implements CouponClientFacade {
 				if (coupon.getType().equals(cType)) {
 
 					allCouponsByType.add(coupon);
+					MyLogger.logToFile(Level.SEVERE, "getAllPurchasedCouponsByType Coupon Done");
 				}
 			}
 			if (allCouponsByType.isEmpty()) {
@@ -172,6 +170,7 @@ public class CustomerFacade implements CouponClientFacade {
 				if (coupon.getPrice() <= price) {
 
 					allPurchasedCouponsByType.add(coupon);
+					MyLogger.logToFile(Level.SEVERE, "getAllPurchasedCouponsByPrice Coupon Done");
 				}
 			}
 			if (allPurchasedCouponsByType.isEmpty()) {

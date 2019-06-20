@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ import Java.JavaBean.Company;
 import Java.JavaBean.Coupon;
 import Java.JavaBean.CouponType;
 import Java.Main.CouponSystem.clientType;
+import Java.Main.MyLogger;
 
 public class CompanyFacade implements CouponClientFacade { // implement the CouponClientFacade Interface for the Login
 
@@ -92,6 +94,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		// Authentication of the password and company name
 
 		if (company.getCompName().equals(compName) && company.getPassword().equals(pass) && company != null) {
+			MyLogger.logToFile(Level.SEVERE, "Login Company Done");
 
 			return true;// Comparing the company object after fetching from the DB if is equal the User
 
@@ -124,7 +127,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 
 				JOptionPane.showMessageDialog(frame, "Coupon " + coupon.getTitle() + " Already Exist");
-
+				MyLogger.logToFile(Level.SEVERE, "Create Coupon Done");
 				return;
 
 			}
@@ -152,12 +155,14 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		// Remove coupon from Coupon table
 
 		couponDBDAO.removeCoupon(coupon);
+		MyLogger.logToFile(Level.SEVERE, "Remove Coupon Done");
 
 	}
 
 	public void updateCoupon(Coupon coupon) throws Exception {
 
 		couponDBDAO.updateCoupon(coupon);
+		MyLogger.logToFile(Level.SEVERE, "Update Coupon Done");
 
 	}
 
@@ -174,7 +179,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		Set<Coupon> allCoupons = new HashSet<Coupon>();
 
 		allCoupons = couponDBDAO.getAllCoupouns();
-
+		MyLogger.logToFile(Level.SEVERE, "Get All Coupon Done");
 		return allCoupons;
 
 	}
@@ -196,7 +201,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 			companyLocaly = itr.next();
 
 			if (companyLocaly.getCompName().equals(compName)) { // Comparing the company from DataBase if it equals to
-
+				MyLogger.logToFile(Level.SEVERE, "Get All Company Done");
 				// company name
 
 				return companyLocaly;
@@ -224,7 +229,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 			companyLocalypass = itr.next();
 
 			if (companyLocalypass.getPassword().equals(pass)) {
-
+				MyLogger.logToFile(Level.SEVERE, "Get  Company Done");
 				return companyLocalypass;
 
 			}
@@ -242,7 +247,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 		allCoupons = companyDBDAO.getCompanyCoupons(company);
 
 		if (!(allCoupons.isEmpty())) {
-
+			MyLogger.logToFile(Level.SEVERE, "Get  Company Coupons Done");
 			return allCoupons;
 
 		} else {
@@ -276,7 +281,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 			// Check the type of the Coupon
 
 			if (type.equals(coupon2.getType())) {
-
+				MyLogger.logToFile(Level.SEVERE, "Get Coupon by Type Done");
 				coupons2.add(coupon2);
 
 			}
@@ -320,6 +325,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 			if (priceLimt >= coupon2.getPrice()) {
 
 				coupons2.add(coupon2);
+				MyLogger.logToFile(Level.SEVERE, "Get getCouponsByPrice Done");
 
 			}
 
@@ -362,6 +368,7 @@ public class CompanyFacade implements CouponClientFacade { // implement the Coup
 			if (date.compareTo(coupon2.getEndDate()) > 0) {
 
 				coupons2.add(coupon2);
+				MyLogger.logToFile(Level.SEVERE, "Get getCouponsByExpiredDate Done");
 
 			}
 

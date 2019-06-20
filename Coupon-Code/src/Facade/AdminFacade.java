@@ -3,6 +3,7 @@ package Facade;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import DBDAO.CustomerDBDAO;
 import Java.JavaBean.Company;
 import Java.JavaBean.Customer;
 import Java.Main.CouponSystem.clientType;
+import Java.Main.MyLogger;
 
 public class AdminFacade implements CouponClientFacade {
 
@@ -47,10 +49,13 @@ public class AdminFacade implements CouponClientFacade {
 	public Boolean login(String name, String password, clientType cType) throws Exception {
 		// TODO Auto-generated method stub
 		if (name.equals(this.name) && password.equals(this.pass)) {
+			MyLogger.logToFile(Level.SEVERE, "Login Customer Done");
 			return true;
+			// MyLogger.logToFile(Level.SEVERE, "Update Customer Done");
 		}
 
 		return false;
+		// MyLogger.logToFile(Level.SEVERE, "Update Customer Done");
 	}
 
 	public void createCompany(Company company) throws Exception {
@@ -70,6 +75,7 @@ public class AdminFacade implements CouponClientFacade {
 				// if it already existing in the system
 				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 				JOptionPane.showMessageDialog(frame, "Company " + company.getCompName() + "Already Exist");
+				MyLogger.logToFile(Level.SEVERE, "Create Company Done");
 				return;
 
 			}
@@ -88,6 +94,7 @@ public class AdminFacade implements CouponClientFacade {
 		compDAO.removeCompanyCoupons(company);
 		// remove the company
 		compDAO.removeCompany(company);
+		MyLogger.logToFile(Level.SEVERE, "Remove Company Done");
 	}
 
 	public void updateCompany(Company company, String newPassword, String newEmail) throws Exception {
@@ -100,22 +107,23 @@ public class AdminFacade implements CouponClientFacade {
 		company.setPassword(newPassword);
 		company.setEmail(newEmail);
 		compDAO.updateCompany(company);
+		MyLogger.logToFile(Level.SEVERE, "Update Company Done");
 	}
 
 	public Company getCompany(long id) throws Exception {
-
+		MyLogger.logToFile(Level.SEVERE, "Get Company Done");
 		return compDAO.getCompany(id);
 
 	}
 
 	public Company getCompanybyPW(String password) throws Exception {
-
+		MyLogger.logToFile(Level.SEVERE, "Get Company Done");
 		return compDAO.getCompanybyPW(password);
 
 	}
 
 	public Set<Company> getAllCompanies() throws Exception {
-
+		MyLogger.logToFile(Level.SEVERE, "GetAllCompanies Company Done");
 		return compDAO.getAllCompanies();
 
 	}
@@ -137,6 +145,7 @@ public class AdminFacade implements CouponClientFacade {
 		custDAO.createCustomer(customer);
 		JFrame frame = new JFrame("JOptionPane showMessageDialog example");
 		JOptionPane.showMessageDialog(frame, "Customer " + customer.getCustomerName() + "Created");
+		MyLogger.logToFile(Level.SEVERE, "Create Customer Done");
 	}
 
 	public void removeCustomer(Customer customer) throws Exception {
@@ -145,22 +154,24 @@ public class AdminFacade implements CouponClientFacade {
 		custDAO.removeCustomerCoupons(customer);
 		// Remove Customer from CUSTOMER Table
 		custDAO.removeCustomer(customer);
+		MyLogger.logToFile(Level.SEVERE, "Remove  Customer Done");
 
 	}
 
 	public void updateCustomer(Customer customer) throws Exception {
 
 		custDAO.updateCustomer(customer);
+		MyLogger.logToFile(Level.SEVERE, "Update Company Done");
 	}
 
 	public Customer getCustomer(long id) throws Exception {
-
+		MyLogger.logToFile(Level.SEVERE, "Get Company Done");
 		return custDAO.getCustomer(id);
 
 	}
 
 	public Set<Customer> getAllCustomers() throws Exception {
-
+		MyLogger.logToFile(Level.SEVERE, "GetAllCompany Company Done");
 		return custDAO.getAllCustomer();
 
 	}
