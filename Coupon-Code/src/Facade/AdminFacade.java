@@ -87,6 +87,24 @@ public class AdminFacade implements CouponClientFacade {
 
 	}
 
+	public Boolean compeareCustomerExsitingAndEqeul(Customer customer) throws Exception {
+		Set<Customer> allCustomer = new HashSet<Customer>();
+		allCustomer = custDAO.getAllCustomer();
+
+		Iterator<Customer> itr = allCustomer.iterator();
+
+		while (itr.hasNext()) {
+			Customer customer3 = new Customer();
+			customer3 = itr.next();
+			if (customer3 instanceof Customer && customer3.getCustomerName().equals(customer.getCustomerName())) {
+
+				return true;
+
+			}
+		}
+		return false;
+	}
+
 	public void removeCompany(Company company) throws Exception {
 
 		// Update the join Table Company_Coupon and remove the company coupons , first
