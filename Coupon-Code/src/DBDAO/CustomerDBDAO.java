@@ -1121,9 +1121,6 @@ public class CustomerDBDAO implements CustomerDAO {
 
 			}
 
-			// constructor the object, retrieve the attributes from the results
-			// System.out.println(idPK);
-			// System.out.println(customer.getId());
 			pstmt = conn.prepareStatement(sql2);
 			// pstmt.setLong(1, 1);
 			pstmt.setLong(1, customer.getId());
@@ -1134,10 +1131,6 @@ public class CustomerDBDAO implements CustomerDAO {
 
 		} catch (SQLException e) {
 
-			// Handle errors for JDBC
-			// System.out.println(e.getMessage());
-			// System.out.println(e.getCause());
-			// System.out.println(e.getStackTrace());
 			throw new Exception("Purchased Coupon failed");
 
 		} finally {

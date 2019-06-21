@@ -90,6 +90,18 @@ public class CustomerFacade implements CouponClientFacade {
 				MyLogger.logToFile(Level.SEVERE, "purchaseCoupon Coupon Done");
 				return;
 			}
+			if (coupon2.getEndDate().equals(coupon.getEndDate())) {
+				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+				JOptionPane.showMessageDialog(frame, "The Coupon " + coupon.getEndDate() + " is already Expiried");
+				MyLogger.logToFile(Level.SEVERE, "purchaseCoupon Coupon Done");
+				return;
+			}
+			if (coupon2.getAmount()==(coupon.getAmount()) {
+				JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+				JOptionPane.showMessageDialog(frame, "The Coupon " + coupon.getEndDate() + " is already Expiried");
+				MyLogger.logToFile(Level.SEVERE, "purchaseCoupon Coupon Done");
+				return;
+			}
 
 		}
 		// System.out.println(coupon);

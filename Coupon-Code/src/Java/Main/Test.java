@@ -65,6 +65,8 @@ public class Test {
 
 			adminFacade2.createCompany(company8);
 			adminFacade2.createCustomer(customer5);
+			adminFacade2.createCompany(company1);
+			adminFacade2.createCustomer(customer1);
 			adminFacade2.getAllCompanies();
 			adminFacade2.getAllCustomers();
 		}
@@ -91,6 +93,7 @@ public class Test {
 		if (companyfacade != null) {
 			companyfacade.createCoupon(coupon6);
 			companyfacade.createCoupon(coupon7);
+			companyfacade.createCoupon(coupon4);
 			companyfacade.createCoupon(coupon5);
 			companyfacade.getAllCoupons();
 			companyfacade.getCompanyCoupons(company2);
